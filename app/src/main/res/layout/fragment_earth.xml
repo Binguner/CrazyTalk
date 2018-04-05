@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.FragmentEarth">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/fragment_earth_toolbar"
+        android:background="@color/colorToolbar"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+         <com.flyco.tablayout.SlidingTabLayout
+             android:id="@+id/fragment_earth_tabLayout"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center">
+
+         </com.flyco.tablayout.SlidingTabLayout>
+
+        <ImageView
+            android:id="@+id/fragment_earth_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_black_24dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="23dp"/>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fragment_earth_viewPager"
+        app:layout_constraintTop_toBottomOf="@id/fragment_earth_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+</android.support.constraint.ConstraintLayout>

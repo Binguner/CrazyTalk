@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/main_square" android:actionLayout="@layout/support_simple_spinner_dropdown_item"
+        android:title="兴趣星"/>
+    <item android:id="@+id/main_friendCircle"
+        android:title="动态"/>
+    <item android:id="@+id/main_activity"
+        android:title="活动" />
+</menu>

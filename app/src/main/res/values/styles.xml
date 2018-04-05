@@ -6,6 +6,23 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionMenuTextAppearance">@style/MenuTextStyle</item>
+        <item name="popupMenuStyle">@style/MenuTextStyle</item>
+        <item name="android:listPreferredItemPaddingRight">5dp</item>
+        <!--<item name="actionMenuTextAppearance">@style/MenuTextStyle</item>-->
+
     </style>
 
+    <!--<style name="MenuTextStyle">
+        <item name="android:layout_width">50dp</item>
+        <item name="textColor">#00ff00</item>
+    </style>-->
+    <style name="MenuTextStyle" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_weight">20</item>
+        <item name="android:itemPadding">30dp</item>
+        <item name="android:listPreferredItemHeightSmall">60dp</item>
+
+    </style>
 </resources>
