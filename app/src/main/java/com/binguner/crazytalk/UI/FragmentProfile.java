@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.binguner.crazytalk.R;
 
 
-public class FragmentProfile extends android.app.Fragment {
+public class FragmentProfile extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private static FragmentProfile fragmentProfile;

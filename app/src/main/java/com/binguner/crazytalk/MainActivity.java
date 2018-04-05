@@ -1,36 +1,31 @@
 package com.binguner.crazytalk;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Context;
-import android.graphics.Color;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
-import android.view.Gravity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.binguner.crazytalk.UI.FragmentEarth;
 import com.binguner.crazytalk.UI.FragmentProfile;
 import com.binguner.crazytalk.Utils.StatusBarUtil;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     //@BindView(R.id.main_aty_toolbar) Toolbar main_aty_toolbar;
     /*@BindView(R.id.main_aty_choose_area) TextView main_aty_choose_area;
@@ -40,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.main_btn_square) Button main_btn_square;
     @BindView(R.id.main_btn_profile) Button main_btn_profile;
 
+    Fragment temp;
     FragmentEarth fragmentEarth;
     FragmentProfile fragmentProfile;
-    FragmentManager fragmentManager;
+    android.support.v4.app.FragmentManager fragmentManager;
 
     PopupMenu popupMenu;
     @Override
@@ -53,19 +49,23 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         hideActionbarAndTransparentStatusbar();
         initViews();
+        //getSupportFragmentManager()
     }
 
     private void initViews() {
         fragmentEarth = FragmentEarth.getInstance();
         fragmentProfile = FragmentProfile.getInstance();
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
 
+        fragmentManager.beginTransaction().replace(R.id.main_fragment,fragmentEarth).commit();
+        temp = fragmentEarth;
     }
 
     // 设置状态栏和隐藏 ActionBar
     private void hideActionbarAndTransparentStatusbar() {
         // 隐藏 ActionBar
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
+        //getActionBar().hide();
         // 透明化状态栏
         StatusBarUtil.transparentStatusbar(this);
         // 设置状态栏颜色
@@ -74,31 +74,32 @@ public class MainActivity extends AppCompatActivity {
         StatusBarUtil.setStatusbarTextBlack(this);
     }
 
-    /*@OnClick(R.id.main_aty_search)
-    public void search_click(){
-        Toast.makeText(this,"search_click!",Toast.LENGTH_SHORT).show();
-    }*/
 
     @OnClick(R.id.main_btn_square)
     public void gotoSquareClick(View view){
-        fragmentManager.beginTransaction().replace(R.id.main_fragment,fragmentEarth).commit();
+        List<Fragment> list = fragmentManager.getFragments();
+        for(Fragment f:list){
+            Log.d("rara",f.toString());
+        }
+        switchFragment(fragmentEarth);
     }
     @OnClick(R.id.main_btn_profile)
     public void gotoProfile(View view){
-        fragmentManager.beginTransaction().replace(R.id.main_fragment,fragmentProfile).commit();
+        switchFragment(fragmentProfile);
     }
 
-    /*@OnClick(R.id.main_aty_choose_area)
-    public void main_aty_choose_area_Click(View view){
-        wakePop = view;
-        chooseArea(view);
+    private void switchFragment(Fragment fragment){
+        if(fragment != temp){
+            if(!fragment.isAdded()){
+                getSupportFragmentManager().beginTransaction().hide(temp).add(R.id.main_fragment,fragment).commit();
+            }else {
+                getSupportFragmentManager().beginTransaction().hide(temp).show(fragment).commit();
+            }
+            temp = fragment;
+        }
     }
-    @OnClick(R.id.main_aty_choose_arrow)
-    public void main_aty_choose_arrow_Click(View view){
-        //chooseArea(view);
-        main_aty_choose_area_Click(wakePop);
-    }
-*/
+
+
     public void chooseArea(View view){
         Toast.makeText(this,"Choose area click!",Toast.LENGTH_SHORT).show();
         Context wrapper = new ContextThemeWrapper(this,R.style.MenuTextStyle);
