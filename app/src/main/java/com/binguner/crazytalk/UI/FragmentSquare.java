@@ -8,13 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.binguner.crazytalk.CustomView.CustomPagetTransformer;
 import com.binguner.crazytalk.R;
+import com.binguner.crazytalk.CustomView.ChildViewPager;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class FragmentSquare extends Fragment {
 
     private static FragmentSquare fragmentSquare;
     private OnFragmentInteractionListener mListener;
+    @BindView(R.id.square_viewpager) ChildViewPager square_viewpager;
 
     public FragmentSquare() {
         // Required empty public constructor
@@ -40,7 +46,14 @@ public class FragmentSquare extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_square, container, false);
+        ButterKnife.bind(this,view);
+        initViewPager();
+
         return view;
+    }
+
+    private void initViewPager() {
+        square_viewpager.setPageTransformer(false,new CustomPagetTransformer(getActivity()));
     }
 
     // TODO: Rename method, update argument and hook method into UI event

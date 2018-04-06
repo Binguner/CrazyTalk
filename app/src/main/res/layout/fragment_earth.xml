@@ -30,6 +30,7 @@
              app:tl_underline_color="#1AFFFFFF"
              app:tl_indicator_margin_top="6dp"
              app:tl_underline_height="1dp"
+             app:tl_tab_padding="6dp"
              app:tl_textSelectColor="@color/colorTextBlack"
              app:tl_textUnselectColor="@color/colorTextGrey">
 

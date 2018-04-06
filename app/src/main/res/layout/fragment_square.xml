@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@mipmap/background"
     tools:context=".UI.FragmentSquare">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.binguner.crazytalk.CustomView.ChildViewPager
+        android:id="@+id/square_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="I am squere" />
+        android:layout_height="match_parent">
+
+    </com.binguner.crazytalk.CustomView.ChildViewPager>
+
 
 </android.support.constraint.ConstraintLayout>

@@ -34,6 +34,8 @@ public class FragmentEarth extends Fragment {
     List<Fragment> fragmentList;
     String [] titles = {"动态","兴趣星","活动"};
 
+    Context context;
+
     FragmentSquare fragmentSquare;
     FragmentFriendCircle fragmentFriendCircle;
     FragmentActivity fragmentActivity;
@@ -41,7 +43,11 @@ public class FragmentEarth extends Fragment {
     TabFragmentPagerAdapter tabFragmentPagerAdapter;
 
     public FragmentEarth() {
+        tryToGetContext();
+    }
 
+    private void tryToGetContext() {
+        this.context = getActivity();
     }
 
 
@@ -81,6 +87,8 @@ public class FragmentEarth extends Fragment {
         tabFragmentPagerAdapter = new TabFragmentPagerAdapter(getActivity().getSupportFragmentManager(),fragmentList);
         fragment_earth_viewPager.setAdapter(tabFragmentPagerAdapter);
         fragment_earth_tabLayout.setViewPager(fragment_earth_viewPager,titles);
+
+        fragment_earth_viewPager.setCurrentItem(1);
     }
 
     @OnClick(R.id.fragment_earth_search)
