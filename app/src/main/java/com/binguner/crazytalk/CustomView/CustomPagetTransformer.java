@@ -7,7 +7,7 @@ import android.view.View;
 
 public class CustomPagetTransformer implements ViewPager.PageTransformer {
 
-    private ChildViewPager childViewPager;
+    private ViewPager childViewPager;
     private int maxTranslateOffsetX;
 
     public CustomPagetTransformer(Context context){
@@ -17,9 +17,15 @@ public class CustomPagetTransformer implements ViewPager.PageTransformer {
     @Override
     public void transformPage(@NonNull View page, float position) {
         if(null == childViewPager){
-            childViewPager = (ChildViewPager) page.getParent();
+            childViewPager = (ViewPager) page.getParent();
         }
-
+        page.setAlpha(1);
+        if(position > 0 && position <= 1){
+            page.setAlpha(1);
+        }
+        if(position <0 && position >= -1 ){
+            page.setAlpha(1);
+        }
         int leftInScreen = page.getLeft() - childViewPager.getScrollX();
         int centerXInViewPager = leftInScreen + page.getMeasuredWidth() / 2;
         int offsetX = centerXInViewPager - childViewPager.getMeasuredWidth() / 2;

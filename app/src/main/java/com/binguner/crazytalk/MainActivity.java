@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -32,8 +33,8 @@ public class MainActivity extends FragmentActivity {
     @BindView(R.id.main_aty_choose_arrow) ImageView main_aty_choose_arrow;*/
     //@BindView(R.id.main_aty_search) ImageView main_aty_search;
     @BindView(R.id.main_fragment) FrameLayout main_fragment;
-    @BindView(R.id.main_btn_square) Button main_btn_square;
-    @BindView(R.id.main_btn_profile) Button main_btn_profile;
+    @BindView(R.id.main_btn_square) ImageView main_btn_square;
+    @BindView(R.id.main_btn_profile) ImageView main_btn_profile;
 
     Fragment temp;
     FragmentEarth fragmentEarth;

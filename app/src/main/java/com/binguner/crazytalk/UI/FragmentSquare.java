@@ -35,10 +35,13 @@ public class FragmentSquare extends Fragment {
     private static FragmentSquare fragmentSquare;
     private OnFragmentInteractionListener mListener;
     private List<CommenFragment> fragments = new ArrayList<>();
-    private final String[] imageArray = {"assets://image1.jpg", "assets://image2.jpg", "assets://image3.jpg", "assets://image4.jpg", "assets://image5.jpg"};
+    private final String[] imageArray = {"assets://pic1.jpg", "assets://pic2.jpg", "assets://pic3.jpg", "assets://pic4.jpg", "assets://pic5.jpg"};
 
-    @BindView(R.id.square_viewpager) ChildViewPager square_viewpager;
+    @BindView(R.id.square_viewpager) ViewPager square_viewpager;
     @BindView(R.id.indicator_tv) TextView indicator_tv;
+
+    /*int currentIndex;
+    boolean mIsChanged;*/
 
     public FragmentSquare() {
         // Required empty public constructor
@@ -55,6 +58,7 @@ public class FragmentSquare extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //initViewPager();
         if (getArguments() != null) {
 
         }
@@ -72,6 +76,7 @@ public class FragmentSquare extends Fragment {
     }
 
     private void initViewPager() {
+
         square_viewpager.setPageTransformer(false,new CustomPagetTransformer(getActivity()));
         for(int i = 0 ; i < 10 ; i++){
             fragments.add(new CommenFragment());
@@ -90,6 +95,7 @@ public class FragmentSquare extends Fragment {
             }
         });
 
+        square_viewpager.setOffscreenPageLimit(3);
         square_viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -99,13 +105,29 @@ public class FragmentSquare extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 updateIndicatorTv();
+                /*mIsChanged=true;
+                if(position==0){
+                    currentIndex=fragments.size()-2;
+                }else if(position==fragments.size()-1){
+                    currentIndex=1;
+                }else{
+                    currentIndex=position;
+                }*/
+
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
                 updateIndicatorTv();
+                /*if(state==ViewPager.SCROLL_STATE_IDLE){
+                    if(mIsChanged){
+                        mIsChanged=false;
+                        square_viewpager.setCurrentItem(currentIndex,false);
+                    }
+                }*/
             }
         });
+        updateIndicatorTv();
     }
 
     private void updateIndicatorTv() {
