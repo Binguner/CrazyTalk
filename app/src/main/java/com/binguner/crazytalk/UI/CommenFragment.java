@@ -54,9 +54,9 @@ public class CommenFragment extends Fragment implements DragLayout.GotoDetailLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_commen, null);
+        View rootView = inflater.inflate(R.layout.fragment_commen, container,false);
         DragLayout dragLayout = (DragLayout) rootView.findViewById(R.id.drag_layout);
-        imageView = (ImageView) dragLayout.findViewById(R.id.image);
+        imageView = (ImageView) dragLayout.findViewById(R.id.image1);
         ImageLoader.getInstance().displayImage(imageUrl, imageView);
         address1 = dragLayout.findViewById(R.id.address1);
         address2 = dragLayout.findViewById(R.id.address2);
@@ -71,7 +71,7 @@ public class CommenFragment extends Fragment implements DragLayout.GotoDetailLis
         head4 = dragLayout.findViewById(R.id.head4);
 
         dragLayout.setGotoDetailListener(this);
-        return inflater.inflate(R.layout.fragment_commen, container, false);
+        return rootView;
     }
 
     public void onButtonPressed(Uri uri) {
@@ -83,12 +83,12 @@ public class CommenFragment extends Fragment implements DragLayout.GotoDetailLis
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
     }
 
     @Override
@@ -116,6 +116,10 @@ public class CommenFragment extends Fragment implements DragLayout.GotoDetailLis
         Intent intent = new Intent(activity, DetailActivity.class);
         intent.putExtra(DetailActivity.EXTRA_IMAGE_URL, imageUrl);
         ActivityCompat.startActivity(activity, intent, options.toBundle());
+    }
+
+    public void bindData(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 

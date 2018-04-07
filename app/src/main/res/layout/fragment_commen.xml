@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UI.CommenFragment">
 
-    <com.stone.transition.DragLayout
+    <com.binguner.crazytalk.CustomView.DragLayout
         android:id="@+id/drag_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,9 +20,10 @@
             android:layout_height="320dp"
             android:layout_gravity="center_vertical"
             android:alpha="0"
-            android:background="@mipmap/white_back">
+            android:background="@drawable/white_back">
 
             <LinearLayout
+                android:layout_marginTop="100dp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/card_bottom_info_height"
                 android:layout_gravity="bottom"
@@ -129,19 +130,19 @@
 
         <!--2. 頂層可滑动的View-->
 
-        <com.stone.transition.AspectRatioCardView
+        <com.binguner.crazytalk.CustomView.AspectRatioCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/card_extra_height"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="6dp"
             app:cardMaxElevation="6dp">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/image1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY" />
@@ -181,8 +182,8 @@
 
             </RelativeLayout>
 
-        </com.stone.transition.AspectRatioCardView>
+        </com.binguner.crazytalk.CustomView.AspectRatioCardView>
 
-    </com.stone.transition.DragLayout>
+    </com.binguner.crazytalk.CustomView.DragLayout>
 
 </FrameLayout>

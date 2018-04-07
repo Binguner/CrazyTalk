@@ -11,7 +11,7 @@ public class CustomPagetTransformer implements ViewPager.PageTransformer {
     private int maxTranslateOffsetX;
 
     public CustomPagetTransformer(Context context){
-        this.maxTranslateOffsetX = dp2px(context, 180);
+        this.maxTranslateOffsetX = dp2px(context, 360);
     }
 
     @Override
