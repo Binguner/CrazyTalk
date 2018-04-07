@@ -4,8 +4,10 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.binguner.crazytalk.CallbackIntetface.EarthViewPagerChangeListener;
 import com.binguner.crazytalk.UI.FragmentEarth;
 import com.binguner.crazytalk.UI.FragmentProfile;
 import com.binguner.crazytalk.Utils.StatusBarUtil;
@@ -35,11 +38,13 @@ public class MainActivity extends FragmentActivity {
     @BindView(R.id.main_fragment) FrameLayout main_fragment;
     @BindView(R.id.main_btn_square) ImageView main_btn_square;
     @BindView(R.id.main_btn_profile) ImageView main_btn_profile;
+    @BindView(R.id.main_btn_add) ImageView main_btn_add;
 
     Fragment temp;
     FragmentEarth fragmentEarth;
     FragmentProfile fragmentProfile;
     android.support.v4.app.FragmentManager fragmentManager;
+    private int currentItemInViewPager = 1;
 
     PopupMenu popupMenu;
     @Override
@@ -50,7 +55,28 @@ public class MainActivity extends FragmentActivity {
         ButterKnife.bind(this);
         hideActionbarAndTransparentStatusbar();
         initViews();
+        setListener();
         //getSupportFragmentManager()
+    }
+
+    private void setListener() {
+        fragmentEarth.addViewPagerChangeListener(new EarthViewPagerChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                Log.d("shitshit","position is " + position);
+                if(position == 0 || position == 2){
+                    main_btn_add.setImageResource(R.drawable.ic_add_circle_black_36dp);
+                    main_btn_profile.setImageResource(R.drawable.ic_account_circle_black_36dp);
+                    main_btn_square.setImageResource(R.drawable.ic_earth_black_36dp);
+                    currentItemInViewPager = position;
+                }else {
+                    main_btn_add.setImageResource(R.drawable.ic_add_circle_white_36dp);
+                    main_btn_profile.setImageResource(R.drawable.ic_account_circle_white_36dp);
+                    main_btn_square.setImageResource(R.drawable.ic_earth_white_36dp);
+                    currentItemInViewPager = position;
+                }
+            }
+        });
     }
 
     private void initViews() {
@@ -78,14 +104,22 @@ public class MainActivity extends FragmentActivity {
 
     @OnClick(R.id.main_btn_square)
     public void gotoSquareClick(View view){
-        List<Fragment> list = fragmentManager.getFragments();
+        /*List<Fragment> list = fragmentManager.getFragments();
         for(Fragment f:list){
             Log.d("rara",f.toString());
+        }*/
+        if(currentItemInViewPager == 1){
+            main_btn_add.setImageResource(R.drawable.ic_add_circle_white_36dp);
+            main_btn_profile.setImageResource(R.drawable.ic_account_circle_white_36dp);
+            main_btn_square.setImageResource(R.drawable.ic_earth_white_36dp);
         }
         switchFragment(fragmentEarth);
     }
     @OnClick(R.id.main_btn_profile)
     public void gotoProfile(View view){
+        main_btn_add.setImageResource(R.drawable.ic_add_circle_black_36dp);
+        main_btn_profile.setImageResource(R.drawable.ic_account_circle_black_36dp);
+        main_btn_square.setImageResource(R.drawable.ic_earth_black_36dp);
         switchFragment(fragmentProfile);
     }
 

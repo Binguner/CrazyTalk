@@ -6,12 +6,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.binguner.crazytalk.CallbackIntetface.EarthViewPagerChangeListener;
 import com.binguner.crazytalk.R;
 import com.flyco.tablayout.SlidingTabLayout;
 
@@ -30,6 +32,8 @@ public class FragmentEarth extends Fragment {
     @BindView(R.id.fragment_earth_search) ImageView fragment_earth_search;
     @BindView(R.id.fragment_earth_tabLayout) SlidingTabLayout fragment_earth_tabLayout;
     @BindView(R.id.fragment_earth_viewPager) ViewPager fragment_earth_viewPager;
+
+    EarthViewPagerChangeListener listener;
 
     List<Fragment> fragmentList;
     String [] titles = {"动态","兴趣星","活动"};
@@ -89,6 +93,29 @@ public class FragmentEarth extends Fragment {
         fragment_earth_tabLayout.setViewPager(fragment_earth_viewPager,titles);
 
         fragment_earth_viewPager.setCurrentItem(1);
+        fragment_earth_viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(null != listener) {
+                    listener.onPageSelected(position);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    public void addViewPagerChangeListener(EarthViewPagerChangeListener listener ){
+        this.listener = listener;
+        //listener.onPageSelected(positon);
     }
 
     @OnClick(R.id.fragment_earth_search)
@@ -109,6 +136,7 @@ public class FragmentEarth extends Fragment {
 
 
 }
+
 
 class TabFragmentPagerAdapter extends FragmentPagerAdapter{
 
