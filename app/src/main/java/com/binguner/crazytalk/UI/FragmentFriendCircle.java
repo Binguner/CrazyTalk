@@ -4,16 +4,31 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.binguner.crazytalk.Adapters.FriendsCircleAdapter;
+import com.binguner.crazytalk.Model.FriendCircleModel;
 import com.binguner.crazytalk.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class FragmentFriendCircle extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private static FragmentFriendCircle fragmentFriendCircle;
+    private RecyclerView.LayoutManager layoutManager;
+
+    @BindView(R.id.friend_circle_recyclerview) RecyclerView friend_circle_recyclerview;
+
     public FragmentFriendCircle() {
         // Required empty public constructor
     }
@@ -38,7 +53,22 @@ public class FragmentFriendCircle extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_friend_circle, container, false);
+        ButterKnife.bind(this,view);
+        initRecyclerview();
         return view;
+    }
+
+    private void initRecyclerview() {
+        layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        List<FriendCircleModel> list = new ArrayList<>();
+        for(int i = 0 ; i < 10 ;i++){
+            list.add(new FriendCircleModel());
+        }
+        FriendsCircleAdapter adapter = new FriendsCircleAdapter(R.layout.freind_circle_crad_layout,list);
+        Log.d("shihshit",list.size()+"");
+        friend_circle_recyclerview.setLayoutManager(layoutManager);
+        friend_circle_recyclerview.setAdapter(adapter);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
