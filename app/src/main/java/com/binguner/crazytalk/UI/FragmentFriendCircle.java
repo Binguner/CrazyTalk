@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.binguner.crazytalk.Adapters.FriendsCircleAdapter;
+import com.binguner.crazytalk.CustomView.WaveView;
 import com.binguner.crazytalk.Model.FriendCircleModel;
 import com.binguner.crazytalk.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -66,7 +67,7 @@ public class FragmentFriendCircle extends Fragment {
             FriendCircleModel model = new FriendCircleModel();
             list.add(model);
         }
-        FriendsCircleAdapter adapter = new FriendsCircleAdapter(R.layout.freind_circle_crad_layout,list);
+        FriendsCircleAdapter adapter = new FriendsCircleAdapter(getContext(),R.layout.freind_circle_crad_layout,list);
         adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         // 上拉加载
         adapter.setUpFetchEnable(true);
@@ -76,12 +77,14 @@ public class FragmentFriendCircle extends Fragment {
 
             }
         });
-        friend_circle_recyclerview.setLayoutManager(layoutManager);
-        friend_circle_recyclerview.setAdapter(adapter);
 
+        View mWaveView = LayoutInflater.from(getActivity()).inflate(R.layout.foot_wave_view,null,false);
+        adapter.addFooterView(mWaveView);
+        friend_circle_recyclerview.setItemViewCacheSize(0);
+        friend_circle_recyclerview.setAdapter(adapter);
+        friend_circle_recyclerview.setLayoutManager(layoutManager);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);

@@ -7,7 +7,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorToolbar">#fafafa</color>
+    <color name="colorWhite">#fafafa</color>
     <color name="colorBackground">#eeeeee</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="colorBlueTransparent">#b4307fde</color>
     <color name="colorTextGray">#939393</color>
     <color name="colorTextColorNormal">#8A8A8A</color>
 </resources>
