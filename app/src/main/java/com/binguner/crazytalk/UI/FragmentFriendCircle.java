@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.binguner.crazytalk.Adapters.FriendsCircleAdapter;
 import com.binguner.crazytalk.Model.FriendCircleModel;
 import com.binguner.crazytalk.R;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,13 +60,22 @@ public class FragmentFriendCircle extends Fragment {
     }
 
     private void initRecyclerview() {
-        layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         List<FriendCircleModel> list = new ArrayList<>();
         for(int i = 0 ; i < 10 ;i++){
-            list.add(new FriendCircleModel());
+            FriendCircleModel model = new FriendCircleModel();
+            list.add(model);
         }
         FriendsCircleAdapter adapter = new FriendsCircleAdapter(R.layout.freind_circle_crad_layout,list);
-        Log.d("shihshit",list.size()+"");
+        adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+        // 上拉加载
+        adapter.setUpFetchEnable(true);
+        adapter.setUpFetchListener(new BaseQuickAdapter.UpFetchListener() {
+            @Override
+            public void onUpFetch() {
+
+            }
+        });
         friend_circle_recyclerview.setLayoutManager(layoutManager);
         friend_circle_recyclerview.setAdapter(adapter);
 

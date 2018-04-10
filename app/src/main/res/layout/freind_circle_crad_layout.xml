@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/friend_cicle_constrantlayout"
+    android:id="@+id/friend_circle_constrantlayout"
     android:paddingBottom="15dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -17,7 +17,7 @@
         android:layout_height="50dp" />
 
     <TextView
-        android:id="@+id/friend_cicle_person_name"
+        android:id="@+id/friend_circle_person_name"
         android:text="Binguner"
         android:textColor="@color/colorTextBlack"
         android:maxLines="1"
@@ -32,14 +32,14 @@
         android:id="@+id/left_curly"
         android:text="("
         android:textColor="@color/colorTextGray"
-        app:layout_constraintStart_toEndOf="@id/friend_cicle_person_name"
+        app:layout_constraintStart_toEndOf="@id/friend_circle_person_name"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/friend_cicle_circle_name"
+        android:id="@+id/friend_circle_circle_name"
         android:text="瓦坎达"
         android:textColor="@color/colorTextGray"
         app:layout_constraintStart_toEndOf="@id/left_curly"
@@ -53,15 +53,15 @@
         android:id="@+id/right_curly"
         android:text=")"
         android:textColor="@color/colorTextGray"
-        app:layout_constraintStart_toEndOf="@id/friend_cicle_circle_name"
+        app:layout_constraintStart_toEndOf="@id/friend_circle_circle_name"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/friend_cicle_content"
-        app:layout_constraintTop_toBottomOf="@id/friend_cicle_person_name"
+        android:id="@+id/friend_circle_content"
+        app:layout_constraintTop_toBottomOf="@id/friend_circle_person_name"
         app:layout_constraintStart_toEndOf="@id/friend_circle_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="5dp"
@@ -73,10 +73,10 @@
         android:layout_height="wrap_content" />
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/friend_cicle_imageview_group"
-        app:layout_constraintTop_toBottomOf="@id/friend_cicle_content"
-        app:layout_constraintStart_toEndOf="@id/friend_circle_avatar"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/friend_circle_imageview_group"
+        app:layout_constraintTop_toBottomOf="@id/friend_circle_content"
+        app:layout_constraintStart_toStartOf="@id/friend_circle_content"
+        app:layout_constraintEnd_toEndOf="@id/friend_circle_content"
         android:padding="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
@@ -85,56 +85,58 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/friend_cicle_image1"
+            android:id="@+id/friend_circle_image1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/friend_cicle_image2"
-            android:src="@mipmap/demo1"
+            app:layout_constraintEnd_toStartOf="@id/friend_circle_image2"
+            android:src="@mipmap/head2"
             android:layout_marginTop="5dp"
             android:layout_width="0dp"
             android:layout_height="100dp" />
         <ImageView
-            android:id="@+id/friend_cicle_image2"
+            android:id="@+id/friend_circle_image2"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/friend_cicle_image1"
-            app:layout_constraintEnd_toStartOf="@id/friend_cicle_image3"
-            android:src="@mipmap/demo2"
+            app:layout_constraintStart_toEndOf="@id/friend_circle_image1"
+            app:layout_constraintEnd_toStartOf="@id/friend_circle_image3"
+            android:src="@mipmap/head2"
             android:layout_marginTop="5dp"
             android:layout_width="0dp"
             android:layout_height="100dp" />
         <ImageView
-            android:id="@+id/friend_cicle_image3"
+            android:id="@+id/friend_circle_image3"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/friend_cicle_image2"
+            app:layout_constraintStart_toEndOf="@id/friend_circle_image2"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="5dp"
-            android:src="@mipmap/demo3"
+            android:src="@mipmap/head2"
             android:layout_width="0dp"
             android:layout_height="100dp" />
 
 
         <ImageView
-            android:id="@+id/friend_cicle_image4"
-            app:layout_constraintTop_toBottomOf="@id/friend_cicle_image1"
+            android:id="@+id/friend_circle_image4"
+            app:layout_constraintTop_toBottomOf="@id/friend_circle_image1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/friend_cicle_image5"
-            android:src="@mipmap/demo4"
+            app:layout_constraintEnd_toStartOf="@id/friend_circle_image5"
+            android:src="@mipmap/head2"
             android:layout_width="0dp"
             android:layout_height="100dp" />
+
         <ImageView
-            android:id="@+id/friend_cicle_image5"
-            app:layout_constraintTop_toBottomOf="@id/friend_cicle_image2"
-            app:layout_constraintStart_toEndOf="@id/friend_cicle_image4"
-            app:layout_constraintEnd_toStartOf="@id/friend_cicle_image6"
-            android:src="@mipmap/demo5"
+            android:id="@+id/friend_circle_image5"
+            app:layout_constraintTop_toBottomOf="@id/friend_circle_image2"
+            app:layout_constraintStart_toEndOf="@id/friend_circle_image4"
+            app:layout_constraintEnd_toStartOf="@id/friend_circle_image6"
+            android:src="@mipmap/head2"
             android:layout_width="0dp"
             android:layout_height="100dp" />
+
         <ImageView
-            android:id="@+id/friend_cicle_image6"
-            app:layout_constraintTop_toBottomOf="@id/friend_cicle_image3"
-            app:layout_constraintStart_toEndOf="@id/friend_cicle_image5"
+            android:id="@+id/friend_circle_image6"
+            app:layout_constraintTop_toBottomOf="@id/friend_circle_image3"
+            app:layout_constraintStart_toEndOf="@id/friend_circle_image5"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@mipmap/demo2"
+            android:src="@mipmap/head2"
             android:layout_width="0dp"
             android:layout_height="100dp" />
 
@@ -146,7 +148,7 @@
 
 
     <ImageView
-        android:id="@+id/friend_cicle_line"
+        android:id="@+id/friend_circle_line"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/colorTextColorNormal"
         android:layout_width="match_parent"
