@@ -28,6 +28,8 @@ public class FragmentFriendCircle extends Fragment {
     private OnFragmentInteractionListener mListener;
     private static FragmentFriendCircle fragmentFriendCircle;
     private RecyclerView.LayoutManager layoutManager;
+    List<FriendCircleModel> list = null;
+    FriendsCircleAdapter adapter = null;
 
     @BindView(R.id.friend_circle_recyclerview) RecyclerView friend_circle_recyclerview;
 
@@ -62,27 +64,45 @@ public class FragmentFriendCircle extends Fragment {
 
     private void initRecyclerview() {
         layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-        List<FriendCircleModel> list = new ArrayList<>();
+        list = new ArrayList<>();
         for(int i = 0 ; i < 10 ;i++){
             FriendCircleModel model = new FriendCircleModel();
             list.add(model);
         }
-        FriendsCircleAdapter adapter = new FriendsCircleAdapter(getContext(),R.layout.freind_circle_crad_layout,list);
+        adapter = new FriendsCircleAdapter(getContext(),R.layout.freind_circle_crad_layout,list);
         adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         // 上拉加载
-        adapter.setUpFetchEnable(true);
-        adapter.setUpFetchListener(new BaseQuickAdapter.UpFetchListener() {
-            @Override
-            public void onUpFetch() {
-
-            }
-        });
 
         View mWaveView = LayoutInflater.from(getActivity()).inflate(R.layout.foot_wave_view,null,false);
         adapter.addFooterView(mWaveView);
         friend_circle_recyclerview.setItemViewCacheSize(0);
         friend_circle_recyclerview.setAdapter(adapter);
         friend_circle_recyclerview.setLayoutManager(layoutManager);
+
+        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                Log.d("ffTag","Down");
+                addNewSeeds();
+            }
+        });
+    }
+
+    private void addNewSeeds(){
+        friend_circle_recyclerview.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (null != adapter){
+                    for(int i = 0 ; i< 15; i++){
+                        list.add(new FriendCircleModel());
+                    }
+                }
+                adapter.loadMoreComplete();
+
+            }
+        },1000);
+
+
     }
 
     public void onButtonPressed(Uri uri) {
