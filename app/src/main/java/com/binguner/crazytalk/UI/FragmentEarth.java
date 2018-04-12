@@ -120,6 +120,7 @@ public class FragmentEarth extends Fragment {
 
     @OnClick(R.id.fragment_earth_search)
     public void fragment_earth_search_click(View view){
+
         Toast.makeText(getActivity(),"Search",Toast.LENGTH_SHORT).show();
     }
 

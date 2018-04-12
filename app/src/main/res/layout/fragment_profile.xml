@@ -18,8 +18,9 @@
             android:id="@+id/main_activity_collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
+            android:fitsSystemWindows="false"
             app:contentScrim="@color/colorToolbar"
+            android:minHeight="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView
@@ -34,7 +35,7 @@
 
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
-                android:fitsSystemWindows="true"
+                android:fitsSystemWindows="false"
                 app:layout_collapseMode="pin"
                 android:layout_height="?android:attr/actionBarSize"
 
@@ -47,13 +48,19 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        app:layout_anchor="@id/friend_profile_appbarlayou"
-        app:layout_anchorGravity="bottom|center"
-        android:src="@mipmap/head1"
-        android:layout_width="wrap_content"
-        app:contentInsetStart="0dp"
-        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/friend_profile_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
 
 
 

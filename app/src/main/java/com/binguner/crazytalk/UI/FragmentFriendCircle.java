@@ -71,21 +71,18 @@ public class FragmentFriendCircle extends Fragment {
         }
         adapter = new FriendsCircleAdapter(getContext(),R.layout.freind_circle_crad_layout,list);
         adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
-        // 上拉加载
 
         View mWaveView = LayoutInflater.from(getActivity()).inflate(R.layout.foot_wave_view,null,false);
         adapter.addFooterView(mWaveView);
-        friend_circle_recyclerview.setItemViewCacheSize(0);
+        //friend_circle_recyclerview.setItemViewCacheSize(0);
         friend_circle_recyclerview.setAdapter(adapter);
         friend_circle_recyclerview.setLayoutManager(layoutManager);
-
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                Log.d("ffTag","Down");
                 addNewSeeds();
             }
-        });
+        },friend_circle_recyclerview);
     }
 
     private void addNewSeeds(){

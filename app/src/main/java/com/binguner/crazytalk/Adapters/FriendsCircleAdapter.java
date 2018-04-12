@@ -17,9 +17,11 @@ public class FriendsCircleAdapter extends BaseQuickAdapter<FriendCircleModel,Fri
 
 
     private Context context;
+    private int layoutResId;
     public FriendsCircleAdapter(Context context,int layoutResId, @Nullable List<FriendCircleModel> data) {
         super(layoutResId, data);
         this.context = context;
+        this.layoutResId = layoutResId;
     }
 
     @Override

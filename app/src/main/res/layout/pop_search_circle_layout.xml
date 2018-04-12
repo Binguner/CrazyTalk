@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:id="@+id/pop_search_circle_edittext"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:hint="搜索关键字或圈子号"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/pop_search_circle_choose_age_icon"
+        app:layout_constraintTop_toBottomOf="@id/pop_search_circle_edittext"
+        android:src="@drawable/ic_add_circle_black_36dp"
+        app:layout_constraintStart_toStartOf="@id/pop_search_circle_edittext"
+        app:layout_constraintEnd_toStartOf="@id/pop_search_circle_choose_age_btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/pop_search_circle_choose_age_btn1"
+        app:layout_constraintTop_toBottomOf="@id/pop_search_circle_edittext"
+        app:layout_constraintStart_toEndOf="@id/pop_search_circle_choose_age_icon"
+        app:layout_constraintEnd_toStartOf="@id/pop_search_circle_choose_age_btn2"
+        android:text="年龄组"
+        android:background="@color/colorTransparent"
+        android:paddingStart="-100dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/pop_search_circle_choose_age_btn2"
+        app:layout_constraintTop_toBottomOf="@id/pop_search_circle_edittext"
+        app:layout_constraintStart_toEndOf="@id/pop_search_circle_choose_age_btn1"
+        app:layout_constraintEnd_toEndOf="@id/pop_search_circle_edittext"
+        android:text="不限"
+        android:paddingEnd="0dp"
+        android:background="@color/colorTransparent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+
+</android.support.constraint.ConstraintLayout>
