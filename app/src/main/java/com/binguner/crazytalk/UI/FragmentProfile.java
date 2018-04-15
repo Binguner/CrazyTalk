@@ -1,6 +1,8 @@
 package com.binguner.crazytalk.UI;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -8,11 +10,20 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.binguner.crazytalk.Adapters.FriendsCircleAdapter;
 import com.binguner.crazytalk.Listener.AppBarStateChangeListener;
@@ -25,6 +36,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class FragmentProfile extends Fragment {
@@ -34,6 +46,7 @@ public class FragmentProfile extends Fragment {
     @BindView(R.id.main_activity_collapsingToolbarLayout) CollapsingToolbarLayout main_activity_collapsingToolbarLayout;
     @BindView(R.id.friend_profile_appbarlayou) AppBarLayout friend_profile_appbarlayou;
     @BindView(R.id.friend_profile_recyclerview) RecyclerView friend_profile_recyclerview;
+    @BindView(R.id.profile_setting_btn) ImageView profile_setting_btn;
     //@BindView(R.id.friend_profile_avator) CircleImageView friend_profile_avator;
 
     private int lastItemPosition;
@@ -68,7 +81,7 @@ public class FragmentProfile extends Fragment {
                              Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_profile,container,false);
         ButterKnife.bind(this,view);
-        //setListener();
+        setListener();
         initRecyclerView();
         initViews();
         return view;
@@ -141,16 +154,19 @@ public class FragmentProfile extends Fragment {
                 if (state == State.EXPANDED){
                     // 展开
                    // friend_profile_avator.setVisibility(View.VISIBLE);
-
+                    profile_setting_btn.setVisibility(View.INVISIBLE);
                 }
                 if(state == State.IDLE){
                     // 中间
                     Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.animation_to_be_smail);
+                    profile_setting_btn.setVisibility(View.INVISIBLE);
                     //friend_profile_avator.startAnimation(animation);
                 }
                 if(state == State.COLLAPSED){
                     // 折叠
                     //friend_profile_avator.setVisibility(View.INVISIBLE);
+                    profile_setting_btn.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -160,6 +176,52 @@ public class FragmentProfile extends Fragment {
         //main_activity_collapsingToolbarLayout.setlisten
     }
 
+    @OnClick(R.id.profile_setting_btn)
+    public void profile_setting_onClick(View view){
+
+        View view1 = LayoutInflater.from(getContext()).inflate(R.layout.pop_profile_setting_layout,null,false);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(view1);
+        AlertDialog dialog = builder.create();
+
+        WindowManager windowManager = getActivity().getWindowManager();
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+        dialog.show();
+
+        int width = windowManager.getDefaultDisplay().getWidth();
+        params.width = (width/2 + 200);
+        dialog.getWindow().setAttributes(params);
+
+        window.setGravity(Gravity.CENTER);
+        window.setWindowAnimations(R.style.Theme_AppCompat_Dialog_Alert);
+
+        Button pop_profile_setting_person = view1.findViewById(R.id.pop_profile_setting_person);
+        pop_profile_setting_person.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Person Setting",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button pop_profile_setting_circle = view1.findViewById(R.id.pop_profile_setting_circle);
+        pop_profile_setting_circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),CircleSettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button pop_profile_setting_system = view1.findViewById(R.id.pop_profile_setting_system);
+        pop_profile_setting_system.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"System Setting",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 
 
     public void onButtonPressed(Uri uri) {

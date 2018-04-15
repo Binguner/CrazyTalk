@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.CircleSettingActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_circle_setting_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        app:contentInsetStart="0dp"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/activity_circle_setting_back"
+            android:src="@drawable/ic_keyboard_back_black_24dp"
+            android:layout_gravity="left"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize" />
+
+        <TextView
+            android:text="管理圈子"
+            android:layout_gravity="center"
+            android:textColor="@color/colorTextBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/activity_circle_setting_shadow"
+        app:layout_constraintTop_toBottomOf="@id/activity_circle_setting_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@drawable/shadow_below_toolbar"/>
+
+    <TextView
+        android:id="@+id/activity_circle_setting_the_circle_i_created"
+        app:layout_constraintTop_toBottomOf="@id/activity_circle_setting_shadow"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="我创建的"
+        android:textColor="@color/colorTextBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_circle_setting_circle1"
+        app:layout_constraintTop_toBottomOf="@id/activity_circle_setting_the_circle_i_created"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="@dimen/dp_10"
+        app:cardElevation="@dimen/dp_4"
+        app:cardPreventCornerOverlap="true"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <ImageView
+            android:foreground="?attr/selectableItemBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/demo1"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:text="丐帮"
+            android:layout_gravity="center"
+            android:textStyle="normal"
+            android:textColor="@color/colorWhite"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/activity_circle_setting_the_circle_i_joined"
+        android:text="我参加的"
+        android:textColor="@color/colorTextBlack"
+        app:layout_constraintTop_toBottomOf="@id/activity_circle_setting_circle1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_10"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_circle_setting_circle2"
+        app:layout_constraintTop_toBottomOf="@id/activity_circle_setting_the_circle_i_joined"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:cardElevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_10">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:src="@mipmap/demo4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:text="青龙帮"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_circle_setting_circle3"
+        app:layout_constraintTop_toBottomOf="@id/activity_circle_setting_circle2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:cardCornerRadius="@dimen/dp_10"
+        app:cardElevation="@dimen/dp_4">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:src="@mipmap/demo5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:text="白虎帮"
+            android:textColor="@color/colorWhite"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

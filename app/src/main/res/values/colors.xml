@@ -9,7 +9,9 @@
     <color name="colorToolbar">#fafafa</color>
     <color name="colorWhite">#fafafa</color>
     <color name="colorBackground">#eeeeee</color>
+    <color name="colorBackgroundHarf">#807e7e</color>
     <color name="colorTransparent">#00ffffff</color>
+    <color name="colorTransparentharf">#7dffffff</color>
     <color name="colorBlueTransparent">#b4307fde</color>
     <color name="colorTextGray">#939393</color>
     <color name="colorTextColorNormal">#8A8A8A</color>

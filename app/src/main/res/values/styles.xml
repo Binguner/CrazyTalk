@@ -27,4 +27,9 @@
         <item name="android:listPreferredItemHeightSmall">60dp</item>
 
     </style>
+
+    <style name="MyEditTextStyle" parent="Base.V7.Widget.AppCompat.EditText">
+        <item name="android:colorControlNormal">@color/colorTextGrey</item>
+        <item name="android:colorControlActivated">@color/colorTextBlack</item>
+    </style>
 </resources>

@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CustomView.DetailActivity" />
+        <activity android:name=".UI.CircleSettingActivity" />
+        <activity android:name=".UI.CricleActivity"></activity>
     </application>
 
 </manifest>
