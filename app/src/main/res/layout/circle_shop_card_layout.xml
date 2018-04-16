@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/circle_shop_card_layout"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/dp_4"
+    app:cardElevation="@dimen/dp_4"
+    app:cardCornerRadius="@dimen/dp_4"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/circle_shop_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@color/colorBlue"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/circle_shop_name"
+            app:layout_constraintTop_toTopOf="@id/circle_shop_image"
+            app:layout_constraintStart_toEndOf="@id/circle_shop_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:singleLine="false"
+            android:textColor="@color/colorTextBlack"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:maxLines="2"
+            android:layout_marginStart="@dimen/dp_10"
+            android:text="一双时速500公里的庞麦龙歌曲我的滑板鞋中的换板鞋"
+            android:maxLength="20"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/circle_shop_owner_name"
+            app:layout_constraintStart_toEndOf="@id/circle_shop_image"
+            app:layout_constraintBottom_toBottomOf="@id/circle_shop_image"
+            android:layout_marginStart="@dimen/dp_10"
+            android:text="binguenr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/circle_shop_money_icon"
+            app:layout_constraintStart_toEndOf="@id/circle_shop_image"
+            app:layout_constraintBottom_toTopOf="@id/circle_shop_owner_name"
+            android:textSize="12sp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:text="¥"
+            android:textColor="@color/colorTextRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/circle_shop_money_number"
+            android:text="1234"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/circle_shop_money_icon"
+            app:layout_constraintBottom_toTopOf="@id/circle_shop_owner_name"
+            android:layout_marginStart="@dimen/dp_4"
+            android:textColor="@color/colorTextRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/circle_shop_mail_free"
+            android:text="包邮"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/circle_shop_face_trade"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:background="@drawable/button_circle_shop_mail_free"
+            android:textColor="@color/colorBlue"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_width="30dp"
+            android:layout_height="18dp" />
+
+        <Button
+            android:id="@+id/circle_shop_face_trade"
+            android:layout_marginStart="@dimen/dp_4"
+            android:text="面交"
+            android:textSize="10sp"
+            android:textColor="@color/colorGreen"
+            android:background="@drawable/button_circle_shop_face_trade"
+            app:layout_constraintStart_toEndOf="@drawable/button_circle_shop_mail_free"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_width="30dp"
+            android:layout_height="18dp" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

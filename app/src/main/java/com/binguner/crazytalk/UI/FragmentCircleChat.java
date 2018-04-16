@@ -4,16 +4,39 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import com.binguner.crazytalk.Adapters.CircleChatAdapter;
+import com.binguner.crazytalk.Model.CircleChatMessageModel;
 import com.binguner.crazytalk.R;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class FragmentCircleChat extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private static FragmentCircleChat fragmentCircleChat;
+
+    @BindView(R.id.circle_chat_recyclerview) RecyclerView circle_chat_recyclerview;
+    @BindView(R.id.circle_chat_edittext) EditText circle_chat_edittext;
+    @BindView(R.id.circle_chat_send) Button circle_chat_send;
+
+    private LinearLayoutManager linearLayoutManager;
+    private List<CircleChatMessageModel> list;
+    private CircleChatAdapter adapter;
+    private CircleChatMessageModel messageModel;
 
     public FragmentCircleChat() {
         // Required empty public constructor
@@ -36,8 +59,35 @@ public class FragmentCircleChat extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_circle_chat, container, false);
+        View view = inflater.inflate(R.layout.fragment_fragment_circle_chat, container, false);
+        ButterKnife.bind(this,view);
+        setListener();
+        initViews();
+
+        return view;
+    }
+
+    private void setListener() {
+        String msg = circle_chat_edittext.getText().toString();
+        //messageModel = new M
+    }
+
+
+    private void initViews() {
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        list = new ArrayList<>();
+
+        adapter = new CircleChatAdapter(R.layout.circle_chat_message_layout,list);
+        adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+
+        circle_chat_recyclerview.setAdapter(adapter);
+        circle_chat_recyclerview.setLayoutManager(linearLayoutManager);
+
+    }
+
+    @OnClick(R.id.circle_chat_send)
+    public void sendMessage(View view){
+        adapter.addData();
     }
 
     public void onButtonPressed(Uri uri) {
