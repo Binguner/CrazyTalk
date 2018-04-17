@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,8 @@ public class FragmentCircleChat extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private List<CircleChatMessageModel> list;
     private CircleChatAdapter adapter;
-    private CircleChatMessageModel messageModel;
+    private CircleChatMessageModel messageModel_l;
+    private CircleChatMessageModel messageModel_r;
 
     public FragmentCircleChat() {
         // Required empty public constructor
@@ -68,7 +70,6 @@ public class FragmentCircleChat extends Fragment {
     }
 
     private void setListener() {
-        String msg = circle_chat_edittext.getText().toString();
         //messageModel = new M
     }
 
@@ -87,7 +88,35 @@ public class FragmentCircleChat extends Fragment {
 
     @OnClick(R.id.circle_chat_send)
     public void sendMessage(View view){
-        adapter.addData();
+        final String msg = circle_chat_edittext.getText().toString();
+        messageModel_r = new CircleChatMessageModel(msg,CircleChatMessageModel.MESSAGE_RIGHT);
+        circle_chat_recyclerview.post(new Runnable() {
+            @Override
+            public void run() {
+                if(null != adapter){
+                    adapter.addData(messageModel_r);
+                }
+                adapter.loadMoreComplete();
+                if(list.size() > -1) {
+                    circle_chat_recyclerview.smoothScrollToPosition(list.size()+1);
+                }
+            }
+        });
+
+        messageModel_l = new CircleChatMessageModel(msg,CircleChatMessageModel.MESSAGE_LEFT);
+        circle_chat_recyclerview.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(null != adapter){
+                    adapter.addData(messageModel_l);
+                }
+                adapter.loadMoreComplete();
+                if(list.size() > -1) {
+                    circle_chat_recyclerview.smoothScrollToPosition(list.size()+1);
+                }
+            }
+        },500);
+
     }
 
     public void onButtonPressed(Uri uri) {

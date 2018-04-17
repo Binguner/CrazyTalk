@@ -10,7 +10,7 @@
         android:id="@+id/circle_chat_recyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorBackground"
+        android:background="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/circle_chat_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,19 +23,26 @@
         android:id="@+id/circle_chat_edittext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        style="@style/MyEditTextStyle"
+        android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/circle_chat_linear_layout"
         app:layout_constraintEnd_toStartOf="@+id/circle_chat_send"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/circle_chat_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:background="@drawable/button_chat_send_message"
         android:drawableRight="@drawable/ic_arrow_right_white_24dp"
+
         android:text="发送"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/circle_chat_linear_layout"
-        app:layout_constraintEnd_toEndOf="@+id/circle_chat_linear_layout" />
+        app:layout_constraintEnd_toEndOf="@+id/circle_chat_linear_layout"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_4"
+        />
 
     <LinearLayout
         android:id="@+id/circle_chat_linear_layout"
@@ -43,6 +50,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_4"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView

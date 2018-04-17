@@ -31,8 +31,8 @@ import butterknife.OnClick;
 
 public class CricleActivity extends AppCompatActivity {
 
-    @BindView(R.id.circle_collapsing_toolbar_layout) CollapsingToolbarLayout circle_collapsing_toolbar_layout;
-    @BindView(R.id.circle_appbar_Layout) AppBarLayout circle_appbar_Layout;
+    //@BindView(R.id.circle_collapsing_toolbar_layout) CollapsingToolbarLayout circle_collapsing_toolbar_layout;
+    //@BindView(R.id.circle_appbar_Layout) AppBarLayout circle_appbar_Layout;
     @BindView(R.id.circle_table_layout) TabLayout circle_table_layout;
     @BindView(R.id.circle_name) TextView circle_name;
     @BindView(R.id.circle_toolbar_setting) ImageView circle_toolbar_setting;
@@ -66,26 +66,26 @@ public class CricleActivity extends AppCompatActivity {
     }
 
     private void setListener() {
-        circle_appbar_Layout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
-            @Override
-            public void onStateChanged(AppBarLayout appBarLayout, State state) {
-                if (state == State.EXPANDED){
-                    // 展开
-                    circle_name.setVisibility(View.INVISIBLE);
-                    circle_toolbar_setting.setVisibility(View.INVISIBLE);
-                }
-                if(state == State.IDLE){
-                    // 中间
-                    circle_name.setVisibility(View.VISIBLE);
-                    circle_toolbar_setting.setVisibility(View.VISIBLE);
-                }
-                if(state == State.COLLAPSED){
-                    // 折叠
-                    circle_name.setVisibility(View.VISIBLE);
-                    circle_toolbar_setting.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+//        circle_appbar_Layout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
+//            @Override
+//            public void onStateChanged(AppBarLayout appBarLayout, State state) {
+//                if (state == State.EXPANDED){
+//                    // 展开
+//                    circle_name.setVisibility(View.INVISIBLE);
+//                    circle_toolbar_setting.setVisibility(View.INVISIBLE);
+//                }
+//                if(state == State.IDLE){
+//                    // 中间
+//                    circle_name.setVisibility(View.VISIBLE);
+//                    circle_toolbar_setting.setVisibility(View.VISIBLE);
+//                }
+//                if(state == State.COLLAPSED){
+//                    // 折叠
+//                    circle_name.setVisibility(View.VISIBLE);
+//                    circle_toolbar_setting.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
     }
 
     @OnClick(R.id.circle_back)

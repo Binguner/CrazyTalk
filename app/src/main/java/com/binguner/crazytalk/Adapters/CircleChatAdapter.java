@@ -23,10 +23,12 @@ public class CircleChatAdapter extends BaseQuickAdapter<CircleChatMessageModel,C
                 helper.circle_chat_right_message.setVisibility(View.GONE);
                 helper.circle_chat_left_message.setVisibility(View.VISIBLE);
                 helper.circle_chat_left_message.setText(item.getMsg());
+                helper.circle_chat_avator.setVisibility(View.VISIBLE);
             } else if (item.getType() == CircleChatMessageModel.MESSAGE_RIGHT) {
                 helper.circle_chat_right_message.setVisibility(View.VISIBLE);
                 helper.circle_chat_left_message.setVisibility(View.INVISIBLE);
                 helper.circle_chat_right_message.setText(item.getMsg());
+                helper.circle_chat_avator.setVisibility(View.GONE);
             }
         }
     }
