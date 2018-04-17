@@ -89,6 +89,9 @@ public class FragmentCircleChat extends Fragment {
     @OnClick(R.id.circle_chat_send)
     public void sendMessage(View view){
         final String msg = circle_chat_edittext.getText().toString();
+        if( null == msg || msg.equals("")){
+            return;
+        }
         messageModel_r = new CircleChatMessageModel(msg,CircleChatMessageModel.MESSAGE_RIGHT);
         circle_chat_recyclerview.post(new Runnable() {
             @Override
@@ -99,6 +102,7 @@ public class FragmentCircleChat extends Fragment {
                 adapter.loadMoreComplete();
                 if(list.size() > -1) {
                     circle_chat_recyclerview.smoothScrollToPosition(list.size()+1);
+                    circle_chat_edittext.setText("");
                 }
             }
         });
@@ -113,6 +117,7 @@ public class FragmentCircleChat extends Fragment {
                 adapter.loadMoreComplete();
                 if(list.size() > -1) {
                     circle_chat_recyclerview.smoothScrollToPosition(list.size()+1);
+                    circle_chat_edittext.setText("");
                 }
             }
         },500);

@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".UI.UserSettingActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/user_setting_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        app:contentInsetStart="0dp"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/user_setting_back"
+            android:src="@drawable/ic_keyboard_back_black_24dp"
+            android:paddingStart="@dimen/dp_10"
+            android:gravity="left"
+            android:paddingEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize" />
+
+        <ImageView
+            android:id="@+id/user_setting_edit"
+            android:visibility="gone"
+            android:src="@drawable/ic_edit_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:paddingEnd="@dimen/dp_10"
+            android:paddingStart="20dp"
+            android:layout_height="?attr/actionBarSize"
+            />
+
+
+    </android.support.v7.widget.Toolbar>
+    <ImageView
+        android:id="@+id/user_setting_shadow"
+        app:layout_constraintTop_toBottomOf="@id/user_setting_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:src="@drawable/shadow_below_toolbar"/>
+
+    <ScrollView
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_setting_shadow">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/user_setting_avtor_con"
+                android:background="@color/colorWhite"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/user_setting_avtor_sam"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="头像"
+                    android:textColor="@color/colorTextBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/user_setting_avtor_arrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/user_setting_avtor"
+                    android:src="@mipmap/head1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/user_setting_avtor_arrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/user_setting_name_con"
+                android:layout_marginTop="@dimen/dp_10"
+                app:layout_constraintTop_toBottomOf="@id/user_setting_avtor_con"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/user_setting_name_sam"
+                    android:text="昵称"
+                    android:textSize="17sp"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/user_setting_name_arrow"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/user_setting_name"
+                    android:text="Binguner"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintEnd_toStartOf="@id/user_setting_name_arrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/user_setting_sex_con"
+                android:layout_marginTop="@dimen/dp_10"
+                app:layout_constraintTop_toBottomOf="@id/user_setting_name_con"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/user_setting_sex_sam"
+                    android:text="性别"
+                    android:textSize="17sp"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/user_setting_sex_arrow"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/user_setting_"
+                    android:text="男"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintEnd_toStartOf="@id/user_setting_sex_arrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/user_setting_birth_con"
+                android:layout_marginTop="@dimen/dp_10"
+                app:layout_constraintTop_toBottomOf="@id/user_setting_sex_con"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/user_setting_birth_sam"
+                    android:text="生日"
+                    android:textSize="17sp"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/user_setting_birth_arrow"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/user_setting_birth"
+                    android:text="1997 年 1 月 1 日"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintEnd_toStartOf="@id/user_setting_birth_arrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/user_setting_place_con"
+                android:layout_marginTop="@dimen/dp_10"
+                app:layout_constraintTop_toBottomOf="@id/user_setting_birth_con"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/user_setting_place_sam"
+                    android:text="地区"
+                    android:textSize="17sp"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/user_setting_place_arrow"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/user_setting_place"
+                    android:text="天津-滨海"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintEnd_toStartOf="@id/user_setting_place_arrow"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/user_setting_likes_con"
+                android:layout_marginTop="@dimen/dp_10"
+                app:layout_constraintTop_toBottomOf="@id/user_setting_place_con"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp_10">
+
+                <TextView
+                    android:id="@+id/user_setting_likes_sam"
+                    android:text="爱好"
+                    android:textSize="17sp"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/user_setting_likes_btn1"
+                    android:text="美食"
+                    android:textColor="@color/colorOrange"
+                    app:layout_constraintTop_toBottomOf="@id/user_setting_likes_sam"
+                    app:layout_constraintStart_toStartOf="@id/user_setting_likes_sam"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:background="@drawable/button_likes_style"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp" />
+
+                <Button
+                    android:id="@+id/user_setting_likes_btn2"
+                    android:text="旅游"
+                    android:textColor="@color/colorOrange"
+                    android:background="@drawable/button_likes_style"
+                    app:layout_constraintTop_toTopOf="@id/user_setting_likes_btn1"
+                    app:layout_constraintStart_toEndOf="@id/user_setting_likes_btn1"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp" />
+
+                <Button
+                    android:id="@+id/user_setting_likes_btn3"
+                    android:text="猫"
+                    android:textColor="@color/colorOrange"
+                    android:background="@drawable/button_likes_style"
+                    app:layout_constraintTop_toTopOf="@id/user_setting_likes_btn1"
+                    app:layout_constraintStart_toEndOf="@id/user_setting_likes_btn2"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp" />
+
+                <Button
+                    android:id="@+id/user_setting_likes_btn4"
+                    android:text="健身"
+                    android:textColor="@color/colorOrange"
+                    android:background="@drawable/button_likes_style"
+                    app:layout_constraintTop_toTopOf="@id/user_setting_likes_btn1"
+                    app:layout_constraintStart_toEndOf="@id/user_setting_likes_btn3"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp" />
+
+                <Button
+                    android:id="@+id/user_setting_likes_btn5"
+                    android:text="吉他"
+                    android:textColor="@color/colorOrange"
+                    android:background="@drawable/button_likes_style"
+                    app:layout_constraintTop_toTopOf="@id/user_setting_likes_btn1"
+                    app:layout_constraintStart_toEndOf="@id/user_setting_likes_btn4"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp" />
+
+                <Button
+                    android:id="@+id/user_setting_likes_btn6"
+                    android:text="+"
+                    android:textColor="@color/colorOrange"
+                    android:background="@drawable/button_likes_style"
+                    app:layout_constraintTop_toTopOf="@id/user_setting_likes_btn1"
+                    app:layout_constraintStart_toEndOf="@id/user_setting_likes_btn5"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_width="50dp"
+                    android:layout_height="25dp" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/user_setting_des_con"
+                app:layout_constraintTop_toBottomOf="@id/user_setting_likes_con"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/user_setting_des_sam"
+                    android:text="介绍"
+                    android:textColor="@color/colorTextBlack"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="17sp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/user_setting_des_content"
+                    app:layout_constraintTop_toBottomOf="@id/user_setting_des_sam"
+                    app:layout_constraintStart_toStartOf="@id/user_setting_des_sam"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:text="If I can't go on,I wll go on!"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

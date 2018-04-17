@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.SystemSettingActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/system_setting_toolbar"
+        android:layout_width="match_parent"
+        android:background="@color/colorWhite"
+        app:contentInsetStart="0dp"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/system_setting_back"
+            android:src="@drawable/ic_keyboard_back_black_24dp"
+            android:gravty="left"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize" />
+    </android.support.v7.widget.Toolbar>
+    <ImageView
+        android:id="@+id/system_setting_shadow"
+        app:layout_constraintTop_toBottomOf="@id/system_setting_toolbar"
+        android:src="@drawable/shadow_below_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/system_setting_shadow">
+
+        <Button
+            android:id="@+id/system_setting_check_update"
+            android:text="检查更新"
+            android:gravity="left|center_vertical"
+            android:paddingStart="@dimen/dp_10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/colorTransparent"
+            android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

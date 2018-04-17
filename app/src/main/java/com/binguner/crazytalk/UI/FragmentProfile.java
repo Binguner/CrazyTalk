@@ -182,7 +182,7 @@ public class FragmentProfile extends Fragment {
         View view1 = LayoutInflater.from(getContext()).inflate(R.layout.pop_profile_setting_layout,null,false);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(view1);
-        AlertDialog dialog = builder.create();
+        final AlertDialog dialog = builder.create();
 
         WindowManager windowManager = getActivity().getWindowManager();
         Window window = dialog.getWindow();
@@ -200,7 +200,9 @@ public class FragmentProfile extends Fragment {
         pop_profile_setting_person.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Person Setting",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(),UserSettingActivity.class);
+                startActivity(intent);
+                dialog.dismiss();
             }
         });
 
@@ -210,6 +212,7 @@ public class FragmentProfile extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),CircleSettingActivity.class);
                 startActivity(intent);
+                dialog.dismiss();
             }
         });
 
@@ -217,7 +220,9 @@ public class FragmentProfile extends Fragment {
         pop_profile_setting_system.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"System Setting",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(),SystemSettingActivity.class);
+                startActivity(intent);
+                dialog.dismiss();
             }
         });
 

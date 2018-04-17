@@ -63,6 +63,7 @@ public class CricleActivity extends AppCompatActivity {
         circle_viewpager.setAdapter(adapter);
         circle_viewpager.setCurrentItem(3);
         circle_table_layout.setupWithViewPager(circle_viewpager);
+        circle_viewpager.setOffscreenPageLimit(4);
     }
 
     private void setListener() {
