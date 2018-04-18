@@ -1,6 +1,7 @@
 package com.binguner.crazytalk;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.binguner.crazytalk.CallbackIntetface.EarthViewPagerChangeListener;
 import com.binguner.crazytalk.UI.FragmentEarth;
 import com.binguner.crazytalk.UI.FragmentProfile;
+import com.binguner.crazytalk.UI.PlusActivity;
 import com.binguner.crazytalk.Utils.StatusBarUtil;
 
 import java.util.List;
@@ -63,7 +65,6 @@ public class MainActivity extends FragmentActivity {
         fragmentEarth.addViewPagerChangeListener(new EarthViewPagerChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                Log.d("shitshit","position is " + position);
                 if(position == 0 || position == 2){
                     main_btn_add.setImageResource(R.drawable.ic_add_circle_black_36dp);
                     main_btn_profile.setImageResource(R.drawable.ic_account_circle_black_36dp);
@@ -101,6 +102,11 @@ public class MainActivity extends FragmentActivity {
         StatusBarUtil.setStatusbarTextBlack(this);
     }
 
+    @OnClick(R.id.main_btn_add)
+    public void goToCreateActivity(View view){
+        Intent intent = new Intent(this, PlusActivity.class);
+        startActivity(intent);
+    }
 
     @OnClick(R.id.main_btn_square)
     public void gotoSquareClick(View view){

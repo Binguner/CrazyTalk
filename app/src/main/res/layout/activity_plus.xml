@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.PlusActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/plus_toolbar"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/plus_back"
+            android:src="@drawable/ic_keyboard_back_black_24dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize" />
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/plus_shadow"
+        android:src="@drawable/shadow_below_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/plus_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+
+    <TextView
+        android:id="@+id/plus_aty_name_sam"
+        android:text="活动名称"
+        app:layout_constraintTop_toBottomOf="@id/plus_shadow"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <EditText
+        android:id="@+id/plus_aty_name_ed"
+        app:layout_constraintTop_toBottomOf="@id/plus_aty_name_sam"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/plus_place_sam"
+        android:text="地点"
+        app:layout_constraintTop_toBottomOf="@id/plus_aty_name_ed"
+        app:layout_constraintStart_toStartOf="@id/plus_aty_name_sam"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/plus_place_ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        app:layout_constraintTop_toBottomOf="@id/plus_place_sam"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:drawableRight="@drawable/ic_my_location_black_24dp"
+        />
+
+    <TextView
+        android:id="@+id/plus_type_sam"
+        android:text="类型"
+        app:layout_constraintTop_toBottomOf="@id/plus_place_ed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/plus_type_sam_ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/plus_type_sam"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        />
+
+    <TextView
+        android:id="@+id/plus_time_sam"
+        android:text="时间"
+        app:layout_constraintTop_toBottomOf="@id/plus_type_sam_ed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/plus_time_ed"
+        app:layout_constraintTop_toBottomOf="@id/plus_time_sam"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/plus_start"
+        android:text="Start"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/plus_time_ed"
+        android:background="@drawable/button_start_aty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_40"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</android.support.constraint.ConstraintLayout>
