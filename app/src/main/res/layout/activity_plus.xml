@@ -72,6 +72,16 @@
         android:drawableRight="@drawable/ic_my_location_black_24dp"
         />
 
+    <Button
+        android:id="@+id/fake_btn"
+        app:layout_constraintTop_toTopOf="@id/plus_place_ed"
+        app:layout_constraintBottom_toBottomOf="@id/plus_place_ed"
+        app:layout_constraintStart_toStartOf="@id/plus_place_ed"
+        app:layout_constraintEnd_toEndOf="@id/plus_place_ed"
+        android:layout_width="match_parent"
+        android:background="@color/colorTransparent"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/plus_type_sam"
         android:text="类型"

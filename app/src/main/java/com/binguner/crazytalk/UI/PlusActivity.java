@@ -3,6 +3,9 @@ package com.binguner.crazytalk.UI;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
@@ -32,10 +35,17 @@ public class PlusActivity extends AppCompatActivity {
         plus_place_ed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PlusActivity.this,MapActivity.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(PlusActivity.this,MapActivity.class);
+                startActivity(intent);*/
             }
         });
+
+    }
+
+    @OnClick(R.id.fake_btn)
+    public void goToMap(View view){
+        Intent intent = new Intent(PlusActivity.this,MapActivity.class);
+        startActivity(intent);
     }
 
     private void initViews() {

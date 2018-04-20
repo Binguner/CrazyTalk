@@ -28,11 +28,16 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.core.PoiItem;
+import com.amap.api.services.geocoder.AoiItem;
+import com.amap.api.services.geocoder.BusinessArea;
 import com.amap.api.services.geocoder.GeocodeQuery;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.RegeocodeQuery;
 import com.amap.api.services.geocoder.RegeocodeResult;
+import com.amap.api.services.geocoder.RegeocodeRoad;
+import com.amap.api.services.road.Crossroad;
 import com.binguner.crazytalk.R;
 import com.binguner.crazytalk.Utils.StatusBarUtil;
 import com.google.common.collect.MapMaker;
@@ -57,8 +62,9 @@ public class MapActivity extends AppCompatActivity {
     private AMapLocationClientOption mLocationOption = null;
     private Marker locationMarker = null;
     private Marker marker;
-    private LatLng mLatLng;
+    private LatLng mLatLng = null;
     private GeocodeSearch geocodeSearch;
+    private RegeocodeQuery query;
 
     //private LatLng latLng = null;
     @Override
@@ -72,9 +78,59 @@ public class MapActivity extends AppCompatActivity {
         askPermission();
         initMap();
         singleTapToRefresh();
-
+        setListener();
         UIControl();
 
+    }
+
+    private void setListener() {
+        geocodeSearch.setOnGeocodeSearchListener(new GeocodeSearch.OnGeocodeSearchListener() {
+            @Override
+            public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
+                if (regeocodeResult != null && i == 1000) {
+                    String countryName = regeocodeResult.getRegeocodeAddress().getCountry();
+                    String provinceName = regeocodeResult.getRegeocodeAddress().getProvince();  // 山西
+                    String cityName = regeocodeResult.getRegeocodeAddress().getCity();  // 太原
+                    String districtName = regeocodeResult.getRegeocodeAddress().getDistrict();  // 万柏林区
+                    String buildingName = regeocodeResult.getRegeocodeAddress().getBuilding();  //
+                    String townshipName = regeocodeResult.getRegeocodeAddress().getTownship();  // 乌金山镇
+                    String neighborhoodName = regeocodeResult.getRegeocodeAddress().getNeighborhood();  //
+                    String formatAddressName = regeocodeResult.getRegeocodeAddress().getFormatAddress();  //
+
+                    List<RegeocodeRoad> detial = regeocodeResult.getRegeocodeAddress().getRoads();
+                    List<BusinessArea> detial2 = regeocodeResult.getRegeocodeAddress().getBusinessAreas();
+                    List<Crossroad> detial3 = regeocodeResult.getRegeocodeAddress().getCrossroads();
+                    List<PoiItem> detial4 = regeocodeResult.getRegeocodeAddress().getPois();
+                    for (RegeocodeRoad item : detial) {
+                        Log.d("yours", item.getName()); // 定阳路
+                    }
+
+                    for (BusinessArea businessArea : detial2) {
+                        Log.d("Hers", businessArea.getName());
+                    }
+
+                    for (Crossroad crossroad : detial3) {
+                        Log.d("Himhim", crossroad.getName());
+                    }
+                    for (PoiItem poiItem : detial4) {
+                        Log.d("shit", poiItem.getCityName());
+                    }
+                    //String formatAddressName = regeocodeResult.getRegeocodeAddress().get();  //
+                    Log.d("myTag", "cityName" + cityName + "districtName is : " + districtName + " buildingName is :" + buildingName + " townshipName is : " + townshipName + " neighborhoodName is : " + neighborhoodName);
+                    Log.d("myAAG", "formatAddressName is :" + formatAddressName + " adCode is :" + detial);
+                    Toast.makeText(MapActivity.this, countryName + " " + provinceName + " " + cityName + " " +
+                            districtName + " " + buildingName + " t : " + townshipName + " n:  " + neighborhoodName, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+            @Override
+            public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
+                Log.d("tagff", geocodeResult.toString() + "");
+                // Toast.makeText(MapActivity.this,"123: "+geocodeResult.toString(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     private void singleTapToRefresh() {
@@ -183,33 +239,17 @@ public class MapActivity extends AppCompatActivity {
     @OnClick(R.id.map_floating_action_button_located_ok)
     public void choosePlaceOk(View view){
         //mLatLng
-        LatLonPoint point = new LatLonPoint(mLatLng.latitude,mLatLng.longitude);
-        RegeocodeQuery query = new RegeocodeQuery(point,200, GeocodeSearch.AMAP);
-        geocodeSearch.getFromLocationAsyn(query);
-        geocodeSearch.setOnGeocodeSearchListener(new GeocodeSearch.OnGeocodeSearchListener() {
-            @Override
-            public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
-                String countryName = regeocodeResult.getRegeocodeAddress().getCountry();
-                String provinceName = regeocodeResult.getRegeocodeAddress().getProvince();  // 山西
-                String cityName = regeocodeResult.getRegeocodeAddress().getCity();  // 太原
-                String districtName = regeocodeResult.getRegeocodeAddress().getDistrict();  // 万柏林区
-                String buildingName = regeocodeResult.getRegeocodeAddress().getBuilding();  //
-                String townshipName = regeocodeResult.getRegeocodeAddress().getTownship();  //
-                String neighborhoodName = regeocodeResult.getRegeocodeAddress().getNeighborhood();  //
-                String formatAddressName = regeocodeResult.getRegeocodeAddress().getFormatAddress();  //
-                //String formatAddressName = regeocodeResult.getRegeocodeAddress().get();  //
+        if(null != mLatLng) {
+            LatLonPoint point = new LatLonPoint(mLatLng.latitude, mLatLng.longitude);
+            //RegeocodeQuery
+            query = new RegeocodeQuery(point, 200, GeocodeSearch.GPS);
+            geocodeSearch.getFromLocationAsyn(query);
 
-                Toast.makeText(MapActivity.this,countryName + " " + provinceName + " " + cityName + " "+
-                        districtName + " " + buildingName + " t : " + townshipName + " n:  " + neighborhoodName,Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
-                Log.d("tagff",geocodeResult.toString()+"");
-               // Toast.makeText(MapActivity.this,"123: "+geocodeResult.toString(),Toast.LENGTH_SHORT).show();
 
-            }
-        });
+
+            //this.finish();
+        }
         this.finish();
     }
 
