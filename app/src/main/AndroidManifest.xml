@@ -35,10 +35,11 @@
         <activity android:name=".UI.SystemSettingActivity" />
         <activity android:name=".UI.PlusActivity" />
 
+        <service android:name="com.amap.api.location.APSService" />
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="key">
-            d39011b068bb64fa0aba982cac6a938f
+            android:value="c5e69b08be48225798453c5ee17ede43">
+
         </meta-data>
 
         <activity android:name=".UI.MapActivity"></activity>

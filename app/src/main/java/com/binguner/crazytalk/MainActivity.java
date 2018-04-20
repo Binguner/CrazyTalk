@@ -49,6 +49,7 @@ public class MainActivity extends FragmentActivity {
     private int currentItemInViewPager = 1;
 
     PopupMenu popupMenu;
+    //<!--d39011b068bb64fa0aba982cac6a938f-->
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

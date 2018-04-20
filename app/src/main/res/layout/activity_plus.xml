@@ -63,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="none"
+        android:editable="false"
         app:layout_constraintTop_toBottomOf="@id/plus_place_sam"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
