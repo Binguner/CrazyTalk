@@ -9,6 +9,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
@@ -25,6 +27,12 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.geocoder.GeocodeQuery;
+import com.amap.api.services.geocoder.GeocodeResult;
+import com.amap.api.services.geocoder.GeocodeSearch;
+import com.amap.api.services.geocoder.RegeocodeQuery;
+import com.amap.api.services.geocoder.RegeocodeResult;
 import com.binguner.crazytalk.R;
 import com.binguner.crazytalk.Utils.StatusBarUtil;
 import com.google.common.collect.MapMaker;
@@ -41,6 +49,7 @@ public class MapActivity extends AppCompatActivity {
 
     @BindView(R.id.myMap) MapView myMap;
     @BindView(R.id.map_floating_action_button_located) FloatingActionButton map_floating_action_button_located;
+    @BindView(R.id.map_floating_action_button_located_ok) FloatingActionButton map_floating_action_button_located_ok;
     private AMap aMap;
     private MyLocationStyle myLocationStyle;
     private UiSettings mUiSettings;
@@ -49,6 +58,7 @@ public class MapActivity extends AppCompatActivity {
     private Marker locationMarker = null;
     private Marker marker;
     private LatLng mLatLng;
+    private GeocodeSearch geocodeSearch;
 
     //private LatLng latLng = null;
     @Override
@@ -156,9 +166,11 @@ public class MapActivity extends AppCompatActivity {
                 }
                 marker = aMap.addMarker(new MarkerOptions().position(latLng));
                 mLatLng = latLng;
-                Toast.makeText(MapActivity.this,mLatLng.)
+                //Toast.makeText(MapActivity.this,mLatLng.)
             }
         });
+
+        geocodeSearch = new GeocodeSearch(this);
     }
 
     @OnClick(R.id.map_floating_action_button_located)
@@ -166,6 +178,39 @@ public class MapActivity extends AppCompatActivity {
         if(null != mLocationClient){
             //mLocationClient.startLocation();
         }
+    }
+
+    @OnClick(R.id.map_floating_action_button_located_ok)
+    public void choosePlaceOk(View view){
+        //mLatLng
+        LatLonPoint point = new LatLonPoint(mLatLng.latitude,mLatLng.longitude);
+        RegeocodeQuery query = new RegeocodeQuery(point,200, GeocodeSearch.AMAP);
+        geocodeSearch.getFromLocationAsyn(query);
+        geocodeSearch.setOnGeocodeSearchListener(new GeocodeSearch.OnGeocodeSearchListener() {
+            @Override
+            public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
+                String countryName = regeocodeResult.getRegeocodeAddress().getCountry();
+                String provinceName = regeocodeResult.getRegeocodeAddress().getProvince();  // 山西
+                String cityName = regeocodeResult.getRegeocodeAddress().getCity();  // 太原
+                String districtName = regeocodeResult.getRegeocodeAddress().getDistrict();  // 万柏林区
+                String buildingName = regeocodeResult.getRegeocodeAddress().getBuilding();  //
+                String townshipName = regeocodeResult.getRegeocodeAddress().getTownship();  //
+                String neighborhoodName = regeocodeResult.getRegeocodeAddress().getNeighborhood();  //
+                String formatAddressName = regeocodeResult.getRegeocodeAddress().getFormatAddress();  //
+                //String formatAddressName = regeocodeResult.getRegeocodeAddress().get();  //
+
+                Toast.makeText(MapActivity.this,countryName + " " + provinceName + " " + cityName + " "+
+                        districtName + " " + buildingName + " t : " + townshipName + " n:  " + neighborhoodName,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
+                Log.d("tagff",geocodeResult.toString()+"");
+               // Toast.makeText(MapActivity.this,"123: "+geocodeResult.toString(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        this.finish();
     }
 
     @Override
