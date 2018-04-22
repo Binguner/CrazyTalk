@@ -44,6 +44,7 @@
         app:layout_constraintTop_toBottomOf="@id/plus_aty_name_sam"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        style="@style/MyEditTextStyle"
         android:layout_marginStart="@dimen/dp_10"
         android:layout_marginEnd="@dimen/dp_10"
         android:layout_width="match_parent"
@@ -133,7 +134,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="@dimen/dp_40"
-        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_40"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

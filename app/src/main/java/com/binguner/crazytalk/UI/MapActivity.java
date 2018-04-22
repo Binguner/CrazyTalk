@@ -2,7 +2,6 @@ package com.binguner.crazytalk.UI;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
@@ -29,22 +28,19 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
-import com.amap.api.services.geocoder.AoiItem;
 import com.amap.api.services.geocoder.BusinessArea;
-import com.amap.api.services.geocoder.GeocodeQuery;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.RegeocodeQuery;
 import com.amap.api.services.geocoder.RegeocodeResult;
 import com.amap.api.services.geocoder.RegeocodeRoad;
 import com.amap.api.services.road.Crossroad;
+import com.binguner.crazytalk.Listener.MapClickListener;
 import com.binguner.crazytalk.R;
 import com.binguner.crazytalk.Utils.StatusBarUtil;
-import com.google.common.collect.MapMaker;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,6 +61,7 @@ public class MapActivity extends AppCompatActivity {
     private LatLng mLatLng = null;
     private GeocodeSearch geocodeSearch;
     private RegeocodeQuery query;
+    private static MapClickListener listener;
 
     //private LatLng latLng = null;
     @Override
@@ -83,7 +80,11 @@ public class MapActivity extends AppCompatActivity {
 
     }
 
-    private void setListener() {
+    public static void setCallBack(MapClickListener mlistener){
+        listener = mlistener;
+    }
+
+    public void setListener() {
         geocodeSearch.setOnGeocodeSearchListener(new GeocodeSearch.OnGeocodeSearchListener() {
             @Override
             public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
@@ -97,37 +98,13 @@ public class MapActivity extends AppCompatActivity {
                     String neighborhoodName = regeocodeResult.getRegeocodeAddress().getNeighborhood();  //
                     String formatAddressName = regeocodeResult.getRegeocodeAddress().getFormatAddress();  //
 
-                    List<RegeocodeRoad> detial = regeocodeResult.getRegeocodeAddress().getRoads();
-                    List<BusinessArea> detial2 = regeocodeResult.getRegeocodeAddress().getBusinessAreas();
-                    List<Crossroad> detial3 = regeocodeResult.getRegeocodeAddress().getCrossroads();
-                    List<PoiItem> detial4 = regeocodeResult.getRegeocodeAddress().getPois();
-                    for (RegeocodeRoad item : detial) {
-                        Log.d("yours", item.getName()); // 定阳路
-                    }
-
-                    for (BusinessArea businessArea : detial2) {
-                        Log.d("Hers", businessArea.getName());
-                    }
-
-                    for (Crossroad crossroad : detial3) {
-                        Log.d("Himhim", crossroad.getName());
-                    }
-                    for (PoiItem poiItem : detial4) {
-                        Log.d("shit", poiItem.getCityName());
-                    }
-                    //String formatAddressName = regeocodeResult.getRegeocodeAddress().get();  //
-                    Log.d("myTag", "cityName" + cityName + "districtName is : " + districtName + " buildingName is :" + buildingName + " townshipName is : " + townshipName + " neighborhoodName is : " + neighborhoodName);
-                    Log.d("myAAG", "formatAddressName is :" + formatAddressName + " adCode is :" + detial);
-                    Toast.makeText(MapActivity.this, countryName + " " + provinceName + " " + cityName + " " +
-                            districtName + " " + buildingName + " t : " + townshipName + " n:  " + neighborhoodName, Toast.LENGTH_SHORT).show();
+                    listener.MapClicked(formatAddressName);
                 }
             }
 
 
             @Override
             public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
-                Log.d("tagff", geocodeResult.toString() + "");
-                // Toast.makeText(MapActivity.this,"123: "+geocodeResult.toString(),Toast.LENGTH_SHORT).show();
 
             }
         });
