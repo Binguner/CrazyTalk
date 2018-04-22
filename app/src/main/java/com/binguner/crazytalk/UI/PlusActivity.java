@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.binguner.crazytalk.Listener.MapClickListener;
 import com.binguner.crazytalk.R;
@@ -47,7 +48,6 @@ public class PlusActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-
     }
 
 
