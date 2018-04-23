@@ -49,7 +49,6 @@ import butterknife.OnClick;
 public class MapActivity extends AppCompatActivity {
 
     @BindView(R.id.myMap) MapView myMap;
-    @BindView(R.id.map_floating_action_button_located) FloatingActionButton map_floating_action_button_located;
     @BindView(R.id.map_floating_action_button_located_ok) FloatingActionButton map_floating_action_button_located_ok;
     private AMap aMap;
     private MyLocationStyle myLocationStyle;
@@ -206,12 +205,6 @@ public class MapActivity extends AppCompatActivity {
         geocodeSearch = new GeocodeSearch(this);
     }
 
-    @OnClick(R.id.map_floating_action_button_located)
-    public void locatedTheNowPlace(){
-        if(null != mLocationClient){
-            //mLocationClient.startLocation();
-        }
-    }
 
     @OnClick(R.id.map_floating_action_button_located_ok)
     public void choosePlaceOk(View view){

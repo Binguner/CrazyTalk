@@ -36,7 +36,7 @@
             android:layout_marginStart="@dimen/dp_10"
             android:text="一双时速500公里的庞麦龙歌曲我的滑板鞋中的换板鞋"
             android:maxLength="20"
-            android:layout_width="250dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content" />
 
         <TextView
