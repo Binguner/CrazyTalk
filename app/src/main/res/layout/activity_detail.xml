@@ -28,13 +28,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="NORTH LAT"
+                android:text="申请加入"
                 android:textColor="#12edf0"
                 android:textSize="15sp" />
 
             <ImageView
                 android:id="@+id/address2"
                 android:layout_width="22dp"
+                android:visibility="gone"
                 android:layout_height="22dp"
                 android:layout_centerInParent="true"
                 android:scaleType="fitXY"
@@ -46,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="EAST LNG 17"
+                android:text="举报"
                 android:textColor="#12edf0"
                 android:textSize="13sp" />
 
@@ -76,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="La Crescenta-Montrose, CA91020 Glendale"
+                    android:text="丐帮"
                     android:textColor="#333"
                     android:textSize="15sp" />
 

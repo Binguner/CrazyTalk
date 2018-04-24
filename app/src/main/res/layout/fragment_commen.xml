@@ -38,7 +38,7 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:paddingRight="10dp"
-                    android:text="La Crescenta-Montrose, CA91020 Glende And Way"
+                    android:text="丐帮"
                     android:textColor="#333"
                     android:textSize="15sp" />
 
@@ -158,7 +158,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="NORTH LAT"
+                    android:text=""
                     android:textColor="#12edf0"
                     android:textSize="15sp" />
 
@@ -168,7 +168,7 @@
                     android:layout_height="22dp"
                     android:layout_centerInParent="true"
                     android:scaleType="fitXY"
-                    android:src="@mipmap/gps" />
+                    android:src="@drawable/ic_arrow_upward_white_24dp" />
 
                 <TextView
                     android:id="@+id/address3"
@@ -176,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="EAST LNG 17"
+                    android:text=""
                     android:textColor="#12edf0"
                     android:textSize="13sp" />
 
