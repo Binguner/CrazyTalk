@@ -3,14 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBackground"
     tools:context=".UI.FragmentActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/friend_activity_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+
+        <TextView
+            android:text="附近活动"
+            android:textColor="@color/colorTextBlack"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/friend_activity_gotoTalk"
+            android:paddingEnd="@dimen/dp_10"
+            android:paddingStart="20dp"
+            android:src="@drawable/ic_message_reply_text_grey600_24dp"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <View
+        android:id="@+id/friend_activity_shadow"
+        app:layout_constraintTop_toBottomOf="@id/friend_activity_toolbar"
+        android:background="@drawable/shadow_below_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_10"/>
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/friend_activity_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/friend_activity_shadow">
 
     </android.support.v7.widget.RecyclerView>
 

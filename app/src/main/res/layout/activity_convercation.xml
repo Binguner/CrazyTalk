@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorBackground"
+    android:layout_height="match_parent"
+    tools:context=".UI.ConvercationActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/convercation_toolbar"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        app:contentInsetStart="0dp"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/convercation_goBack"
+            android:src="@drawable/ic_keyboard_back_black_24dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize" />
+
+        <TextView
+            android:text="消息"
+            android:textColor="@color/colorTextBlack"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/convercation_shadow"
+        app:layout_constraintTop_toBottomOf="@id/convercation_toolbar"
+        android:src="@drawable/shadow_below_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_10" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/convercation_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/convercation_shadow">
+
+    </android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>

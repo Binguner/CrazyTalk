@@ -7,7 +7,9 @@
     tools:context=".UI.PlusActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/plus_toolbar"
+        android:background="@color/colorToolbar"
         app:contentInsetStart="0dp"
+        app:contentInsetRight="0dp"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
@@ -18,6 +20,22 @@
             android:paddingEnd="20dp"
             android:layout_width="wrap_content"
             android:layout_height="?attr/actionBarSize" />
+        
+
+
+        <CheckBox
+            android:id="@+id/plus_checkBox"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:layout_gravity="end"
+            android:text="圈外可见"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </android.support.v7.widget.Toolbar>
 
     <ImageView
@@ -139,11 +157,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/plus_people_num_sam"
+        android:text="人数限制"
+        app:layout_constraintTop_toBottomOf="@id/plus_time_ed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/plus_people_num_ed"
+        app:layout_constraintTop_toBottomOf="@id/plus_people_num_sam"
+        app:layout_constraintStart_toStartOf="parent"
+        android:drawableBottom="@drawable/edittext_bottom_line"
+        android:background="@null"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:textCursorDrawable="@drawable/cursor_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/plus_people_say_sam"
+        android:text="人数限制"
+        app:layout_constraintTop_toBottomOf="@id/plus_people_num_ed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/plus_people_say_ed"
+        app:layout_constraintTop_toBottomOf="@id/plus_people_say_sam"
+        app:layout_constraintStart_toStartOf="parent"
+        android:drawableBottom="@drawable/edittext_bottom_line"
+        android:background="@null"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:textCursorDrawable="@drawable/cursor_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/plus_start"
         android:text="Start"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/plus_time_ed"
+        app:layout_constraintTop_toBottomOf="@id/plus_people_say_ed"
         android:background="@drawable/button_start_aty"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/dp_10"
@@ -152,5 +218,6 @@
         android:layout_marginEnd="@dimen/dp_40"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 
 </android.support.constraint.ConstraintLayout>

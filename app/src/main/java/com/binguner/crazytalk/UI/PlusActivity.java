@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class PlusActivity extends AppCompatActivity {
     @BindView(R.id.plus_type_sam_ed) EditText plus_type_sam_ed;
     @BindView(R.id.plus_time_ed) EditText plus_time_ed;
     @BindView(R.id.plus_start) Button plus_start;
+    @BindView(R.id.plus_checkBox) CheckBox plus_checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,16 @@ public class PlusActivity extends AppCompatActivity {
             @Override
             public void MapClicked(String msg) {
                 plus_place_ed.setText(msg);
+            }
+        });
+        plus_checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    Toast.makeText(PlusActivity.this,"此活动所有人可见",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(PlusActivity.this,"此活动仅本圈内人可见",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

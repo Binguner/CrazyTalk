@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.FragmentNews">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/fragment_news_toolbar"
+        android:layout_width="match_parent"
+        android:background="@color/colorToolbar"
+        android:layout_height="?attr/actionBarSize">
+
+        <TextView
+            android:layout_gravity="center"
+            android:textColor="@color/colorTextBlack"
+            android:text="圈内动态"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/fragment_news_goToTalk"
+            android:layout_gravity="end"
+            android:paddingEnd="@dimen/dp_10"
+            android:paddingStart="20dp"
+            android:src="@drawable/ic_message_reply_text_grey600_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize" />
+    </android.support.v7.widget.Toolbar>
+
+
+
+
+    <RelativeLayout
+        app:layout_constraintTop_toBottomOf="@id/fragment_news_toolbar"
+        android:descendantFocusability="blocksDescendants"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_news_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground">
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

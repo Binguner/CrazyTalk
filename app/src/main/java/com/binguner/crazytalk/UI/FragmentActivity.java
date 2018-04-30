@@ -1,6 +1,7 @@
 package com.binguner.crazytalk.UI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class FragmentActivity extends Fragment {
@@ -61,6 +63,12 @@ public class FragmentActivity extends Fragment {
         ButterKnife.bind(this,view);
         initRecyclerView();
         return view;
+    }
+
+    @OnClick(R.id.friend_activity_gotoTalk)
+    public void goToTalk(View view){
+        Intent intent = new Intent(getContext(),ConvercationActivity.class);
+        startActivity(intent);
     }
 
     private void initRecyclerView() {

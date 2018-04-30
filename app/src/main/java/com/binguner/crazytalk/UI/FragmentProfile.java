@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
@@ -24,6 +25,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.binguner.crazytalk.Adapters.FriendsCircleAdapter;
 import com.binguner.crazytalk.Listener.AppBarStateChangeListener;
@@ -41,19 +43,16 @@ import butterknife.OnClick;
 
 public class FragmentProfile extends Fragment {
 
+    @BindView(R.id.my_page_talk_btn) ImageView my_page_talk_btn;
+    @BindView(R.id.my_page_collection_btn) Button my_page_collection_btn;
+    @BindView(R.id.my_page_money_btn) Button my_page_money_btn;
+    @BindView(R.id.my_page_shopping_car_btn) Button my_page_shopping_car_btn;
+    @BindView(R.id.my_page_vip_btn) Button my_page_vip_btn;
+    @BindView(R.id.my_page_setting_btn) Button my_page_setting_btn;
+
+    @BindView(R.id.my_page_cardview1) CardView my_page_cardview1;
     private OnFragmentInteractionListener mListener;
     private static FragmentProfile fragmentProfile;
-    @BindView(R.id.main_activity_collapsingToolbarLayout) CollapsingToolbarLayout main_activity_collapsingToolbarLayout;
-    @BindView(R.id.friend_profile_appbarlayou) AppBarLayout friend_profile_appbarlayou;
-    @BindView(R.id.friend_profile_recyclerview) RecyclerView friend_profile_recyclerview;
-    @BindView(R.id.profile_setting_btn) ImageView profile_setting_btn;
-    //@BindView(R.id.friend_profile_avator) CircleImageView friend_profile_avator;
-
-    private int lastItemPosition;
-    private List<FriendCircleModel> list = null;
-    //private RecyclerView.LayoutManager layoutManager = null;
-    private LinearLayoutManager layoutManager = null;
-    private FriendsCircleAdapter adapter = null;
 
     public FragmentProfile() {
         // Required empty public constructor
@@ -79,104 +78,55 @@ public class FragmentProfile extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_profile,container,false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_my_page_layout,container,false);
         ButterKnife.bind(this,view);
         setListener();
-        initRecyclerView();
         initViews();
         return view;
     }
 
-    private void initRecyclerView() {
-        layoutManager = new LinearLayoutManager(getContext());
-        list = new ArrayList<>();
-        for (int i = 0 ; i <= 15 ; i++){
-            FriendCircleModel mode = new FriendCircleModel();
-            list.add(mode);
-        }
-        adapter = new FriendsCircleAdapter(getContext(),R.layout.freind_circle_crad_layout,list);
-        adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
-
-        View mWaveView = LayoutInflater.from(getContext()).inflate(R.layout.foot_wave_view,null,false);
-        //layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-        adapter.addFooterView(mWaveView);
-
-        friend_profile_recyclerview.setAdapter(adapter);
-        friend_profile_recyclerview.setLayoutManager(layoutManager);
-        /*adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-            @Override
-            public void onLoadMoreRequested() {
-                addNewDatas();
-            }
-        });*/
-//        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-//            @Override
-//            public void onLoadMoreRequested() {
-//                addNewSeeds();
-//            }
-//        },friend_profile_recyclerview);
-
-       friend_profile_recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if(newState == RecyclerView.SCROLL_STATE_IDLE && lastItemPosition+3 >= layoutManager.getItemCount()){
-                    addNewSeeds();
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                lastItemPosition = layoutManager.findLastVisibleItemPosition();
-            }
-        });
-    }
-
-    private void addNewSeeds(){
-        friend_profile_recyclerview.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if( null != adapter){
-                    for(int i = 0 ; i < 10 ; i++){
-                        adapter.addData(new FriendCircleModel());
-                    }
-                }
-                adapter.loadMoreComplete();
-            }
-        },500);
-    }
 
     private void setListener() {
-        friend_profile_appbarlayou.addOnOffsetChangedListener(new AppBarStateChangeListener() {
-            @Override
-            public void onStateChanged(AppBarLayout appBarLayout, State state) {
-                if (state == State.EXPANDED){
-                    // 展开
-                   // friend_profile_avator.setVisibility(View.VISIBLE);
-                    profile_setting_btn.setVisibility(View.INVISIBLE);
-                }
-                if(state == State.IDLE){
-                    // 中间
-                    Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.animation_to_be_smail);
-                    profile_setting_btn.setVisibility(View.INVISIBLE);
-                    //friend_profile_avator.startAnimation(animation);
-                }
-                if(state == State.COLLAPSED){
-                    // 折叠
-                    //friend_profile_avator.setVisibility(View.INVISIBLE);
-                    profile_setting_btn.setVisibility(View.VISIBLE);
+    }
 
-                }
-            }
-        });
+    @OnClick(R.id.my_page_cardview1)
+    public void goToPersonSetting(View view){
+        Intent intent = new Intent(getContext(),UserSettingActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.my_page_talk_btn)
+    public void foToTalk(View view){
+        //Toast.makeText(getContext(),"Talk",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(),ConvercationActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.my_page_collection_btn)
+    public void goToCollection(View view){
+        Toast.makeText(getContext(),"Collection",Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.my_page_money_btn)
+    public void goToMoney(View view){
+        Toast.makeText(getContext(),"Money",Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.my_page_shopping_car_btn)
+    public void goToShoppingCar(View view){
+        Toast.makeText(getContext(),"shopping_car",Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.my_page_vip_btn)
+    public void goToVip(View view){
+        Toast.makeText(getContext(),"Vip",Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.my_page_setting_btn)
+    public void goToSetting(View view){
+        //Toast.makeText(getContext(),"Setting",Toast.LENGTH_SHORT).show();
+        profile_setting_onClick(view);
     }
 
     private void initViews() {
         //main_activity_collapsingToolbarLayout.setlisten
     }
 
-    @OnClick(R.id.profile_setting_btn)
     public void profile_setting_onClick(View view){
 
         View view1 = LayoutInflater.from(getContext()).inflate(R.layout.pop_profile_setting_layout,null,false);

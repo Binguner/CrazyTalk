@@ -87,14 +87,14 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/user_setting_avtor"
-                    android:src="@mipmap/head1"
+                    android:src="@mipmap/cai"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/user_setting_avtor_arrow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginTop="@dimen/dp_4"
                     android:layout_marginBottom="@dimen/dp_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -130,7 +130,7 @@
 
                 <TextView
                     android:id="@+id/user_setting_name"
-                    android:text="Binguner"
+                    android:text="小白菜"
                     android:textColor="@color/colorTextBlack"
                     app:layout_constraintEnd_toStartOf="@id/user_setting_name_arrow"
                     app:layout_constraintTop_toTopOf="parent"

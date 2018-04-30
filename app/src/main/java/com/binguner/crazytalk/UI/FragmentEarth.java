@@ -38,6 +38,7 @@ public class FragmentEarth extends Fragment {
     @BindView(R.id.fragment_earth_tabLayout) SlidingTabLayout fragment_earth_tabLayout;
     @BindView(R.id.fragment_earth_viewPager) ViewPager fragment_earth_viewPager;
     @BindView(R.id.fragment_earth_mycircle) ImageView fragment_earth_mycircle;
+    @BindView(R.id.fragment_earth_gototalk) ImageView fragment_earth_gototalk;
 
     Button pop_search_circle_choose_age_btn1,pop_search_circle_choose_age_btn2,pop_search_circle_choose_place_btn1,pop_search_circle_choose_place_btn2,
             pop_search_circle_choose_hobby_btn1,pop_search_circle_choose_hobby_btn2;
@@ -47,13 +48,13 @@ public class FragmentEarth extends Fragment {
     EarthViewPagerChangeListener listener;
 
     List<Fragment> fragmentList;
-    String [] titles = {"动态","兴趣星","活动"};
+    String [] titles = {"兴趣星"};
 
     Context context;
 
     FragmentSquare fragmentSquare;
-    FragmentFriendCircle fragmentFriendCircle;
-    FragmentActivity fragmentActivity;
+    //FragmentFriendCircle fragmentFriendCircle;
+    //FragmentActivity fragmentActivity;
 
     TabFragmentPagerAdapter tabFragmentPagerAdapter;
 
@@ -91,12 +92,12 @@ public class FragmentEarth extends Fragment {
         fragmentList = new ArrayList<>();
 
         fragmentSquare = FragmentSquare.getInstance();
-        fragmentFriendCircle = FragmentFriendCircle.getInstance();
-        fragmentActivity = FragmentActivity.getInstance();
+        //fragmentFriendCircle = FragmentFriendCircle.getInstance();
+        //fragmentActivity = FragmentActivity.getInstance();
 
-        fragmentList.add(fragmentFriendCircle);
+        //fragmentList.add(fragmentFriendCircle);
         fragmentList.add(fragmentSquare);
-        fragmentList.add(fragmentActivity);
+        //fragmentList.add(fragmentActivity);
 
         tabFragmentPagerAdapter = new TabFragmentPagerAdapter(getActivity().getSupportFragmentManager(),fragmentList);
         fragment_earth_viewPager.setAdapter(tabFragmentPagerAdapter);
@@ -208,6 +209,12 @@ public class FragmentEarth extends Fragment {
     @OnClick(R.id.fragment_earth_mycircle)
     public void goToMyCircle(View view){
         Intent intent = new Intent(getContext(),CircleSettingActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.fragment_earth_gototalk)
+    public void goToTalk(View view){
+        Intent intent = new Intent(getContext(),ConvercationActivity.class);
         startActivity(intent);
     }
 

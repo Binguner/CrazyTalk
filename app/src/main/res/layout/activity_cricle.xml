@@ -17,20 +17,15 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/circle_toolbar"
             android:layout_width="match_parent"
+            app:contentInsetStartWithNavigation="0dp"
             android:layout_height="?attr/actionBarSize"
             android:fitsSystemWindows="true"
             android:background="@color/colorWhite"
             android:gravity="top"
             app:contentInsetStart="0dp"
+            app:navigationIcon="@drawable/ic_keyboard_back_black_24dp"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/circle_back"
-                android:layout_width="wrap_content"
-                android:layout_height="?attr/actionBarSize"
-                android:paddingEnd="20dp"
-                android:paddingStart="@dimen/dp_10"
-                android:src="@drawable/ic_keyboard_back_black_24dp" />
 
             <TextView
                 android:id="@+id/circle_name"
@@ -41,14 +36,15 @@
                 android:textColor="@color/colorTextBlack"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/circle_toolbar_setting"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/circle_toolbar_ed"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:paddingEnd="@dimen/dp_10"
-                android:paddingStart="20dp"
-                android:src="@drawable/ic_account_settings_variant_black_24dp" />
+                android:textCursorDrawable="@color/colorBlack"
+                android:background="@drawable/search_ed_style"/>
+
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout

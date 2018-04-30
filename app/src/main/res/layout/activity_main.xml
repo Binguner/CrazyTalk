@@ -16,33 +16,56 @@
         />
 
 
-    <ImageView
+    <ImageButton
         android:id="@+id/main_btn_square"
         app:layout_constraintBottom_toBottomOf="parent"
         android:src="@drawable/ic_earth_white_36dp"
-        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/button_main_style"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/main_btn_add"
+        app:layout_constraintEnd_toStartOf="@id/main_btn_near_activity"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/main_btn_near_activity"
+        app:layout_constraintStart_toEndOf="@id/main_btn_square"
+        app:layout_constraintEnd_toStartOf="@id/main_btn_add"
+        android:src="@drawable/ic_near_me_black_36dp"
+        android:background="@drawable/button_main_style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
         android:id="@+id/main_btn_add"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_main_style"
         android:src="@drawable/ic_add_circle_white_36dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/dp_10"
-
-        app:layout_constraintStart_toEndOf="@id/main_btn_square"
-        app:layout_constraintEnd_toStartOf="@id/main_btn_profile"
-
+        android:layout_marginBottom="0dp"
+        app:layout_constraintStart_toEndOf="@id/main_btn_near_activity"
+        app:layout_constraintEnd_toStartOf="@id/main_btn_new_post"
         />
-    <ImageView
+
+    <ImageButton
+        android:id="@+id/main_btn_new_post"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/main_btn_add"
+        app:layout_constraintEnd_toStartOf="@id/main_btn_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/button_main_style"
+        android:src="@drawable/ic_new_box_black_36dp"
+        />
+    <ImageButton
         android:id="@+id/main_btn_profile"
         android:src="@drawable/ic_account_circle_white_36dp"
-        app:layout_constraintStart_toEndOf="@id/main_btn_add"
-        android:layout_marginBottom="@dimen/dp_10"
+        app:layout_constraintStart_toEndOf="@id/main_btn_new_post"
+        android:background="@drawable/button_main_style"
+        android:layout_marginBottom="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="0dp"
