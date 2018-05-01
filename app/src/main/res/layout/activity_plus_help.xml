@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.PlusHelpActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/plus_help_toolbar"
+        android:background="@color/colorToolbar"
+        app:contentInsetStart="0dp"
+        app:contentInsetRight="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/plus_help_back"
+            android:src="@drawable/ic_keyboard_back_black_24dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/plu_help_shadow"
+        android:src="@drawable/shadow_below_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/plus_help_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+
+    <TextView
+        android:id="@+id/plus_help_type_sam"
+        android:text="帮助类型"
+        app:layout_constraintTop_toBottomOf="@id/plu_help_shadow"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/plus_help_type_ed"
+        app:layout_constraintTop_toBottomOf="@id/plus_help_type_sam"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textCursorDrawable="@drawable/cursor_style"
+        android:drawableBottom="@drawable/edittext_bottom_line"
+        android:background="@null"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/plus_help_level_sam"
+        android:text="帮助类型"
+        app:layout_constraintTop_toBottomOf="@id/plus_help_type_ed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/plus_help_level_ed"
+        app:layout_constraintTop_toBottomOf="@id/plus_help_level_sam"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textCursorDrawable="@drawable/cursor_style"
+        android:drawableBottom="@drawable/edittext_bottom_line"
+        android:background="@null"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/plus_help_place_sam"
+        android:text="帮助地点"
+        app:layout_constraintTop_toBottomOf="@id/plus_help_level_ed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/plus_help_place_ed"
+        app:layout_constraintTop_toBottomOf="@id/plus_help_place_sam"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textCursorDrawable="@drawable/cursor_style"
+        android:drawableBottom="@drawable/edittext_bottom_line"
+        android:background="@null"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/plus_help_people_num_sam"
+        android:text="帮助人数"
+        app:layout_constraintTop_toBottomOf="@id/plus_help_place_ed"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/plus_help_people_num_ed"
+        app:layout_constraintTop_toBottomOf="@id/plus_help_people_num_sam"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textCursorDrawable="@drawable/cursor_style"
+        android:drawableBottom="@drawable/edittext_bottom_line"
+        android:background="@null"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/plus_help_start"
+        android:text="Start"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/plus_help_people_num_ed"
+        android:background="@drawable/button_start_aty"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/dp_40"
+        android:layout_marginEnd="@dimen/dp_40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</android.support.constraint.ConstraintLayout>

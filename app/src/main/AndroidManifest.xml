@@ -44,8 +44,8 @@
         <activity android:name=".UI.MapActivity" />
         <activity android:name=".UI.MyProfileActivity" />
         <activity android:name=".UI.ConvercationActivity" />
-
-        <activity android:name=".UI.TalkActivity"></activity>
+        <activity android:name=".UI.TalkActivity" />
+        <activity android:name=".UI.PlusHelpActivity"></activity>
     </application>
 
 </manifest>

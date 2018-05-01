@@ -187,6 +187,27 @@
                 android:paddingStart="@dimen/dp_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/my_page_line4"
+                app:layout_constraintTop_toBottomOf="@id/my_page_vip_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:layout_width="match_parent"
+                android:background="@color/colorBackground"
+                android:layout_height="2dp" />
+            <Button
+                android:id="@+id/my_page_manage_circle_btn"
+                app:layout_constraintTop_toBottomOf="@id/my_page_line4"
+                android:text="管理圈子"
+                android:textSize="18sp"
+                android:background="@color/colorTransparent"
+                android:gravity="start|center"
+                android:paddingStart="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             
             
         </android.support.constraint.ConstraintLayout>

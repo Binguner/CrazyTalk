@@ -23,4 +23,5 @@
     <color name="colorTextGray">#939393</color>
     <color name="colorTextGrayAlittle">#dcdcdc</color>
     <color name="colorTextColorNormal">#8A8A8A</color>
+    <color name="colorButtonClick">#e6e6e6</color>
 </resources>

@@ -1,5 +1,6 @@
 package com.binguner.crazytalk;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -8,11 +9,13 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -25,6 +28,7 @@ import com.binguner.crazytalk.UI.FragmentEarth;
 import com.binguner.crazytalk.UI.FragmentNews;
 import com.binguner.crazytalk.UI.FragmentProfile;
 import com.binguner.crazytalk.UI.PlusActivity;
+import com.binguner.crazytalk.UI.PlusHelpActivity;
 import com.binguner.crazytalk.Utils.StatusBarUtil;
 
 import java.util.List;
@@ -40,9 +44,11 @@ public class MainActivity extends FragmentActivity {
     @BindView(R.id.main_aty_choose_arrow) ImageView main_aty_choose_arrow;*/
     //@BindView(R.id.main_aty_search) ImageView main_aty_search;
     @BindView(R.id.main_fragment) FrameLayout main_fragment;
+
     @BindView(R.id.main_btn_square) ImageButton main_btn_square;
     @BindView(R.id.main_btn_near_activity) ImageButton main_btn_near_activity;
     @BindView(R.id.main_btn_profile) ImageButton main_btn_profile;
+    @BindView(R.id.main_btn_new_post) ImageButton main_btn_new_post;
     @BindView(R.id.main_btn_add) ImageButton main_btn_add;
 
     Fragment temp;
@@ -73,15 +79,15 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onPageSelected(int position) {
                 if(position == 0 || position == 2){
-                    main_btn_add.setImageResource(R.drawable.ic_add_circle_black_36dp);
-                    main_btn_profile.setImageResource(R.drawable.ic_account_circle_black_36dp);
-                    main_btn_square.setImageResource(R.drawable.ic_earth_black_36dp);
-                    currentItemInViewPager = position;
+                    //main_btn_add.setImageResource(R.drawable.ic_add_circle_black_36dp);
+                    //main_btn_profile.setImageResource(R.drawable.ic_account_circle_black_36dp);
+                    //main_btn_square.setImageResource(R.drawable.ic_earth_black_36dp);
+                    //currentItemInViewPager = position;
                 }else {
-                    main_btn_add.setImageResource(R.drawable.ic_add_circle_white_36dp);
-                    main_btn_profile.setImageResource(R.drawable.ic_account_circle_white_36dp);
-                    main_btn_square.setImageResource(R.drawable.ic_earth_white_36dp);
-                    currentItemInViewPager = position;
+                    //main_btn_add.setImageResource(R.drawable.ic_add_circle_white_36dp);
+                    //main_btn_profile.setImageResource(R.drawable.ic_account_circle_white_36dp);
+                    //main_btn_square.setImageResource(R.drawable.ic_earth_white_36dp);
+                    //currentItemInViewPager = position;
                 }
             }
         });
@@ -113,8 +119,9 @@ public class MainActivity extends FragmentActivity {
 
     @OnClick(R.id.main_btn_add)
     public void goToCreateActivity(View view){
-        Intent intent = new Intent(this, PlusActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, PlusActivity.class);
+        //startActivity(intent);
+        goToStartAtyOrHelp();
     }
 
     @OnClick(R.id.main_btn_square)
@@ -124,28 +131,48 @@ public class MainActivity extends FragmentActivity {
             Log.d("rara",f.toString());
         }*/
         if(currentItemInViewPager == 1){
-            main_btn_add.setImageResource(R.drawable.ic_add_circle_white_36dp);
-            main_btn_profile.setImageResource(R.drawable.ic_account_circle_white_36dp);
-            main_btn_square.setImageResource(R.drawable.ic_earth_white_36dp);
+            //main_btn_add.setImageResource(R.drawable.ic_add_circle_white_36dp);
+            //main_btn_profile.setImageResource(R.drawable.ic_account_circle_white_36dp);
+            //main_btn_square.setImageResource(R.drawable.ic_earth_white_36dp);
         }
+        main_btn_square.setSelected(true);
+        main_btn_new_post.setSelected(false);
+        main_btn_add.setSelected(false);
+        main_btn_near_activity.setSelected(false);
+        main_btn_profile.setSelected(false);
         switchFragment(fragmentEarth);
     }
 
     @OnClick(R.id.main_btn_profile)
     public void gotoProfile(View view){
-        main_btn_add.setImageResource(R.drawable.ic_add_circle_black_36dp);
-        main_btn_profile.setImageResource(R.drawable.ic_account_circle_black_36dp);
-        main_btn_square.setImageResource(R.drawable.ic_earth_black_36dp);
+        //main_btn_add.setImageResource(R.drawable.ic_add_circle_black_36dp);
+        //main_btn_profile.setImageResource(R.drawable.ic_account_circle_black_36dp);
+        //main_btn_square.setImageResource(R.drawable.ic_earth_black_36dp);
+        main_btn_square.setSelected(false);
+        main_btn_add.setSelected(false);
+        main_btn_near_activity.setSelected(false);
+        main_btn_profile.setSelected(true);
+        main_btn_new_post.setSelected(false);
         switchFragment(fragmentProfile);
     }
 
     @OnClick(R.id.main_btn_near_activity)
-    public void fotoNearActivity(View view){
+    public void fotoNearActivity(View view) {
+        main_btn_square.setSelected(false);
+        main_btn_add.setSelected(false);
+        main_btn_near_activity.setSelected(true);
+        main_btn_new_post.setSelected(false);
+        main_btn_profile.setSelected(false);
         switchFragment(fragmentActivity);
     }
 
     @OnClick(R.id.main_btn_new_post)
     public void goToNews(View view){
+        main_btn_square.setSelected(false);
+        main_btn_add.setSelected(false);
+        main_btn_near_activity.setSelected(false);
+        main_btn_new_post.setSelected(true);
+        main_btn_profile.setSelected(false);
         switchFragment(fragmentNews);
     }
 
@@ -158,6 +185,49 @@ public class MainActivity extends FragmentActivity {
             }
             temp = fragment;
         }
+    }
+
+
+    private void goToStartAtyOrHelp(){
+        View view = LayoutInflater.from(this).inflate(R.layout.pop_add_layout,null,false);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(view);
+        final AlertDialog dialog = builder.create();
+
+        WindowManager windowManager = this.getWindowManager();
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+
+        int width = windowManager.getDefaultDisplay().getWidth();
+        params.width = (width/2 + 200);
+        dialog.getWindow().setAttributes(params);
+
+        window.setGravity(Gravity.CENTER);
+        window.setWindowAnimations(R.style.Theme_AppCompat_Dialog_Alert);
+
+        dialog.show();
+
+        Button pop_add_aty = view.findViewById(R.id.pop_add_aty);
+        Button pop_add_help = view.findViewById(R.id.pop_add_help);
+
+        pop_add_aty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,PlusActivity.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+
+        pop_add_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PlusHelpActivity.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        });
+
     }
 
 

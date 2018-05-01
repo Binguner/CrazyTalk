@@ -49,6 +49,7 @@ public class FragmentProfile extends Fragment {
     @BindView(R.id.my_page_shopping_car_btn) Button my_page_shopping_car_btn;
     @BindView(R.id.my_page_vip_btn) Button my_page_vip_btn;
     @BindView(R.id.my_page_setting_btn) Button my_page_setting_btn;
+    @BindView(R.id.my_page_manage_circle_btn) Button my_page_manage_circle_btn;
 
     @BindView(R.id.my_page_cardview1) CardView my_page_cardview1;
     private OnFragmentInteractionListener mListener;
@@ -120,7 +121,14 @@ public class FragmentProfile extends Fragment {
     @OnClick(R.id.my_page_setting_btn)
     public void goToSetting(View view){
         //Toast.makeText(getContext(),"Setting",Toast.LENGTH_SHORT).show();
-        profile_setting_onClick(view);
+        //profile_setting_onClick(view);
+        Intent intent = new Intent(getContext(),SystemSettingActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.my_page_manage_circle_btn)
+    public void goToManageCiecle(View view){
+        Intent intent = new Intent(getContext(),CircleSettingActivity.class);
+        startActivity(intent);
     }
 
     private void initViews() {
