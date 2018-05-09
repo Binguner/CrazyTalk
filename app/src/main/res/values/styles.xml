@@ -32,4 +32,11 @@
         <item name="android:colorControlNormal">@color/colorTextGrey</item>
         <item name="android:colorControlActivated">@color/colorTextBlack</item>
     </style>
+
+    <style name="AppWelcome" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@mipmap/atypic
+
+        </item>
+    </style>
+
 </resources>
